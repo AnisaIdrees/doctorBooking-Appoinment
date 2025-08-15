@@ -12,6 +12,12 @@ const userSchema = mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    isVerified: {
+        default: false,
+        type: Boolean,
+    },
+    verificationCode: String,
+
     address: {
         type: String,
         required: true,
@@ -21,7 +27,7 @@ const userSchema = mongoose.Schema({
         required: true,
         minlength: 8
     }
-})
+}, { timestamps: true })
 
 // hash password
 userSchema.pre('save', async function (next) {

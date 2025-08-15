@@ -25,13 +25,18 @@ export const signUp = async (req, res) => {
 
     try {
         // create user
-        const user = await User.create(req.body)
+        const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
+        const user = await User.create({
+            ...req.body,
+            verificationCode
+        })
         const token = signinToken(user)
         res.status(201).json({
             success: true,
             message: 'sign up successfully',
             token,
-            user
+            user,
+            verificationCode
         })
 
     } catch (error) {
