@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config()
+dotenv.config(); 
 import express from 'express'
 import cors from 'cors'
 const app = express()
@@ -13,9 +13,11 @@ dbConnection()
 app.use(express.json())
 app.use(cors())
 
-app.use('/api', authRouter)
+app.use('/api/auth', authRouter)
 
 app.get('/', (req, res) => {
     res.send('hello world')
 })
 app.listen(process.env.PORT, console.log(`server is running on ${process.env.PORT}`));
+console.log("ENV TEST:", process.env.PORT,process.env.JWT_SECRET);
+console.log(process.env.SMTP_USER)

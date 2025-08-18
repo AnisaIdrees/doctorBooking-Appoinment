@@ -12,12 +12,6 @@ const userSchema = mongoose.Schema({
         unique: true,
         lowercase: true
     },
-    isVerified: {
-        default: false,
-        type: Boolean,
-    },
-    verificationCode: String,
-
     address: {
         type: String,
         required: true,
@@ -26,7 +20,28 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         minlength: 8
-    }
+    },
+    isAccountVerified: {
+        type: Boolean,
+        default: false,
+    },
+    verifyOtp: {
+        type: String,
+        default: '',
+    },
+    verifyOtpExpiredAt: {
+        default: 0,
+        type: Number,
+    },
+    resetOtp: {
+        type: String,
+        default: '',
+    },
+    resetOtpExpiredAt: {
+        type: Number,
+        default: 0,
+    },
+    // verificationCode: String,
 }, { timestamps: true })
 
 // hash password
@@ -43,5 +58,5 @@ userSchema.methods.comparedPassword = function (plainTextPass) {
     return bcrypt.compare(plainTextPass, this.password)
 }
 
-const User = mongoose.model('user', userSchema)
+const User = mongoose.model.user || mongoose.model('user', userSchema)
 export default User;
