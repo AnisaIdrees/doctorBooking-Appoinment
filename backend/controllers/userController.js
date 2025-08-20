@@ -6,7 +6,7 @@ import { signinToken } from "../utils/token.js";
 
 
 
-// *******************  signUp  *********************// 
+// *****************  signUp  *******************// 
 export const signUp = async (req, res) => {
     const { name, email, address, password } = req.body
 
@@ -14,11 +14,8 @@ export const signUp = async (req, res) => {
         res.status(402).json({
             success: false,
             message: 'all feild are required',
-
         })
     }
-
-
     // check user 
     const isExist = await User.findOne({ email })
     if (isExist) {
@@ -97,7 +94,7 @@ export const signUp = async (req, res) => {
 
 }
 
-//********************  login  ************************/
+//********************  login  ******************//
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body
@@ -129,7 +126,7 @@ export const login = async (req, res) => {
     }
 }
 
-//********************  user very account ************************/
+//**************** user very account ************//
 export const sendVerifyOtp = async (req, res) => {
 
     try {
@@ -151,8 +148,46 @@ export const sendVerifyOtp = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: 'Account Verification OTP',
-            text: `Your OTP is ${otp} . Verify your account using this OTP`
-
+            html: `
+    <div style="max-width: 500px; margin: auto; padding: 20px; 
+                font-family: Arial, sans-serif; 
+                border: 1px solid #ddd; 
+                border-radius: 10px; 
+                background: #f9f9f9;">
+      
+      <h2 style="text-align: center; color: #4A90E2;">Account Verification</h2>
+      
+      <p style="font-size: 16px; color: #333;">
+        Hello,
+      </p>
+      
+      <p style="font-size: 16px; color: #333;">
+        Your OTP is:
+      </p>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <span style="font-size: 24px; font-weight: bold; 
+                     color: #4A90E2; 
+                     letter-spacing: 2px;
+                     padding: 10px 20px; 
+                     border: 2px dashed #4A90E2; 
+                     border-radius: 8px;
+                     background: #fff;">
+          ${otp}
+        </span>
+      </div>
+      
+      <p style="font-size: 14px; color: #555;">
+        Verify your account using this OTP. 
+        This code will expire in <b>10 minutes</b>. 
+        If you did not request this, please ignore this email.
+      </p>
+      
+      <p style="font-size: 14px; color: #777; margin-top: 20px; text-align: center;">
+        © ${new Date().getFullYear()} Code by Aneesa. All rights reserved.
+      </p>
+    </div>
+  `
         }
         await transporter.sendMail(mailOption)
         res.status(201).json({
@@ -170,8 +205,7 @@ export const sendVerifyOtp = async (req, res) => {
 
 }
 
-
-//**********************************  Verify Email ****************/
+//****************  Verify Email ****************//
 export const verifyEmail = async (req, res) => {
     const { userId, otp } = req.body;
     if (!userId || !otp) {
@@ -219,8 +253,7 @@ export const verifyEmail = async (req, res) => {
     }
 }
 
-
-//*******************************  isAuthenticated or not *******/
+//*************** isAuthenticated or not *******//
 export const isAuthenticated = async (req, res) => {
     try {
         return res.status(201).json({
@@ -230,6 +263,127 @@ export const isAuthenticated = async (req, res) => {
         res.status(500).json({
             success: false,
             message: error.message
+        })
+    }
+}
+
+//*************** send reset otp **************//
+export const sendResetOtp = async (req, res) => {
+
+    const { email } = req.body;
+    if (!email) {
+        return res.status(401).json({
+            success: false,
+            message: 'Email is Required'
+        })
+    }
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: 'User not found'
+            })
+        }
+        const otp = String(Math.floor(100000 + Math.random() * 900000))
+        user.resetOtp = otp
+        user.resetOtpExpiredAt = Date.now() + 15 * 60 * 1000
+
+        await user.save()
+
+        const mailOption = {
+            from: process.env.SENDER_EMAIL,
+            to: user.email,
+            subject: 'Password Reset OTP',
+            html: `<div style="max-width: 500px; margin: auto; padding: 20px; 
+              font-family: Arial, sans-serif; 
+              border: 1px solid #ddd; 
+              border-radius: 10px; 
+              background: #f9f9f9;">
+              <h2 style="text-align: center; color: #4A90E2;">Password Reset OTP</h2>
+             <p style="font-size: 16px; color: #333;">Hello,</p>
+             <p style="font-size: 16px; color: #333;">Your One-Time Password (OTP) for resetting your account password is:</p>
+            <div style="text-align: center; margin: 20px 0;">
+             <span style="font-size: 24px; font-weight: bold; 
+                   color: #4A90E2; 
+                   letter-spacing: 2px;
+                   padding: 10px 20px; 
+                   border: 2px dashed #4A90E2; 
+                   border-radius: 8px;
+                   background: #fff;">
+                ${otp}
+            </span>
+        </div>
+         <p style="font-size: 14px; color: #555;">
+         Please use this OTP to proceed with resetting your password. 
+        This code is valid for <b>10 minutes</b>. If you did not request this, please ignore this email.
+      </p>
+    
+    <p style="font-size: 14px; color: #777; margin-top: 20px; text-align: center;">
+       © ${new Date().getFullYear()} Code by Aneesa. All rights reserved.
+      </p>
+      </div>`
+
+
+
+        }
+
+        await transporter.sendMail(mailOption)
+        return res.status(201).json({
+            success: true,
+            message: 'OTP sent to your email'
+        })
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            message: error.message
+        })
+    }
+
+}
+
+//*************** Reset User password **************//
+export const resetPassword = async (req, res) => {
+    const { email, otp, newPassword } = req.body;
+    if (!email || !otp || !newPassword) {
+        return res.status(401).json({
+            success: false,
+            message: 'Email OTP , and ,new password are required'
+        })
+    }
+
+    try {
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: 'user not found'
+            })
+        }
+        if (use.resetOtp === '' || user.resetOtp !== otp) {
+            return res.status(401).json({
+                success: false,
+                message: 'invalid OTP'
+            })
+        }
+        if (user.resetOtpExpiredAt < Date.now()) {
+            return res.json({
+                success: false,
+                message: 'OTP Expired',
+            })
+        }
+        user.resetOtp = '';
+        user.resetOtpExpiredAt = 0
+        await user.save()
+        return res.status(201).json({
+            success: true,
+            message: 'passeord has been reset successfully',
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message,
         })
     }
 }
