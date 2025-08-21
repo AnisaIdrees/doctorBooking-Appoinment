@@ -1,4 +1,4 @@
-import { isAuthenticated, login, resetPassword, sendResetOtp, sendVerifyOtp, signUp, verifyEmail } from "../controllers/userController.js";
+import { isAuthenticated, login, resetPassword, sendResetOtp, sendVerifyOtp, signUp, verifyEmail } from "../controllers/authController.js";
 import { Router } from 'express'
 import { middlewareToProtect } from "../middleware/authMiddleware.js";
 

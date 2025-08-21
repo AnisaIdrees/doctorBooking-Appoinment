@@ -9,6 +9,6 @@ export const signinToken = (user) => {
         role: user.role
     },
         process.env.JWT_SECRET,
-        { expiresIn: '2d' }
+        { expiresIn: '7d' }
     )
 }
