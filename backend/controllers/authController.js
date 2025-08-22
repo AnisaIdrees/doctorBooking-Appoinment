@@ -8,9 +8,9 @@ import { signinToken } from "../utils/token.js";
 
 // *****************  signUp  *******************// 
 export const signUp = async (req, res) => {
-    const { name, email, address, password } = req.body
+    const { name, email,password } = req.body
 
-    if (!name || !email || !address || !password) {
+    if (!name || !email ||  !password) {
         res.status(402).json({
             success: false,
             message: 'all feild are required',

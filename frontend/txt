@@ -1,0 +1,6 @@
+/api/auth/signUp
+/api/auth/login
+/api/auth/send-verify-otp
+/api/auth/verify-account
+/api/auth/send-reset-otp
+/api/auth/reset-password
