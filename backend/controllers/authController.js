@@ -8,9 +8,9 @@ import { signinToken } from "../utils/token.js";
 
 // *****************  signUp  *******************// 
 export const signUp = async (req, res) => {
-    const { name, email,password } = req.body
+    const { name, email, password } = req.body
 
-    if (!name || !email ||  !password) {
+    if (!name || !email || !password) {
         res.status(402).json({
             success: false,
             message: 'all feild are required',
@@ -139,7 +139,7 @@ export const sendVerifyOtp = async (req, res) => {
                 message: 'Account Already verified'
             })
         }
-        const otp = String(Math.floor(100000 + Math.random() * 900000))
+        const otp = String(Math.floor(10000 + Math.random() * 90000))
         user.verifyOtp = otp
         user.verifyOtpExpiredAt = Date.now() + 24 * 60 * 60 * 1000
 

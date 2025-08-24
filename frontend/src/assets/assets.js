@@ -10,3 +10,18 @@ export const icons = {
     emailIcon: MdEmail,
     showPswdIcon: FaLockOpen
 }
+
+
+// function checkUserMessage(message) {
+//   const text = message.toLowerCase();
+//   if (text.includes("appointment")) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// let userInput1 = "I want to book an appointment";
+// let userInput2 = "Just checking something";
+
+// console.log(checkUserMessage(userInput1)); // true
+// console.log(checkUserMessage(userInput2)); // false

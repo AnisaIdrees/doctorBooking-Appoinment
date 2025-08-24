@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { icons } from '../assets/assets'
 import axios from 'axios'
+import { setToken, setUser } from '../utils/auth'
+import EmailVerify from './EmailVerify'
 
 function Login() {
 
+  const navigate = useNavigate()
   const [state, setState] = useState('signUp')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
   const [formData, setFormData] = useState({
+
     name: "",
     email: "",
     password: "",
@@ -53,9 +57,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // start loading
+    setLoading(true);
 
     try {
+
       if (validateForm()) {
         if (state === 'signUp') {
           const { data } = await axios.post(
@@ -68,8 +73,8 @@ function Login() {
             console.log('Sign up data:', data);
             console.log("Token:", data.token);
 
-            // setToken(data.token);
-            // setUser(data.user);
+            setToken(data.token);
+            setUser(data.user);
 
             // Reset form data
             setFormData({
@@ -78,8 +83,30 @@ function Login() {
               contact: "",
               password: ""
             });
+
+            //for email verify
+            const { data: data2 } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/send-verify-otp`, {}, {
+              headers: { Authorization: `Bearer ${data.token}` }
+            }
+            )
+            alert("OTP sent to your email. Please verify.");
+            console.log(data2.message);
+
+            navigate('/email-verify')
           }
         }
+        else {
+          await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData)
+          console.log("Login successfully:", data);
+          setFormData({
+            name: "",
+            email: "",
+            contact: "",
+            password: ""
+          });
+          navigate("/");
+        }
+
       }
     } catch (error) {
       console.log('Sign up error:', error.message);
@@ -145,12 +172,6 @@ function Login() {
 
             <p className=' mx-2 mb-2 text-indigo-500 cursor-pointer'>Forgot password?</p>
 
-            {/* <button
-              disabled={loading}
-              className=' cursor-pointer mt-3 rounded-full w-full py-2.5  bg-gradient-to-r from-indigo-500 to-indigo-800 text-white font-medium'>
-              {state === 'signUp' ? 'Sign up' : 'Login'}
-            </button> */}
-
             <button
               disabled={loading}
               className={`mt-3 rounded-full w-full py-2.5 font-medium text-white 
@@ -161,13 +182,9 @@ function Login() {
                 ? (state === "signUp" ? "Signing up..." : "Logging in...")
                 : (state === "signUp" ? "Sign up" : "Login")}
             </button>
-
-
           </form>
-
-
           {state === 'signUp' ? (
-            <p className='text-gray-600 text- mb-3 mt-4 text-xs'>Already have an account? {" "}
+            <p className='text-gray-600 text-center mb-3 mt-4 text-xs'>Already have an account? {" "}
               <span onClick={() => setState('Login')} className='text-blue-500 cursor-pointer hover:underline'> login here</span>
             </p>
           ) : (
