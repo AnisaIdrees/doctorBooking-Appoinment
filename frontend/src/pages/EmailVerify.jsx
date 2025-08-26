@@ -106,8 +106,6 @@ export default function EmailVerify() {
           ))}
         </div>
 
-
-
         <Button text='Verify OTP' onClick={handleSubmit} />
 
         {/* Response Message */}
