@@ -69,16 +69,15 @@ Currently, it supports **user authentication, responsive UI, and financial dashb
 The app follows a **modular and scalable architecture**:
 
 src/
-┣ 📂 components # Reusable UI components (Buttons, Forms, Modals, etc.)
-┣ 📂 pages # Application pages (Login, Dashboard, Transactions, etc.)
-┣ 📂 context # Context API for global state (Auth, Theme, etc.)
-┣ 📂 hooks # Custom hooks (useAuth, useFetch, etc.)
-┣ 📂 services # API calls & backend communication (Axios configs)
-┣ 📂 utils # Helper functions & constants
-┣ 📂 assets # Images, icons, and static files
-┣ 📂 styles # Global styles and theme configs
-┗ 📜 App.js # Application root with routing
-
+┣ 📂 components
+┣ 📂 pages
+┣ 📂 context
+┣ 📂 hooks
+┣ 📂 services
+┣ 📂 utils
+┣ 📂 assets
+┣ 📂 styles
+┗ 📜 App.js
 
 ---
 
