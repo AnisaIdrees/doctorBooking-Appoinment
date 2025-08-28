@@ -32,7 +32,7 @@ Currently, it supports **user authentication, responsive UI, and financial dashb
 - ✅ Finance Dashboard (basic expense & income tracking)  
 
 📸 **Screenshots (dummy examples)**  
-> ![Authentication Screenshot](https://via.placeholder.com/600x300?text=Authentication+Page)  
+> ![Authentication Screenshot](./frontend/public/signup.png)  
 > ![Dashboard Screenshot](https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/edb39f213740299.674c0047b1568.png)  
 
 ---
