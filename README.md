@@ -31,7 +31,7 @@ Currently, it supports **user authentication, responsive UI, and financial dashb
 - ✅ Responsive UI (React + Tailwind)  
 - ✅ Finance Dashboard (basic expense & income tracking)  
 
-📸 **Screenshots (dummy examples)**  
+📸 **Screenshots  
 > ![Authentication Screenshot](./frontend/public/login.png)  
 > ![Dashboard Screenshot](https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/edb39f213740299.674c0047b1568.png)  
 
