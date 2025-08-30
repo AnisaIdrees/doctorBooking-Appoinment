@@ -387,3 +387,9 @@ export const resetPassword = async (req, res) => {
         })
     }
 }
+
+
+//*************** profile **************************//
+export const profile = (req, res) => {
+  res.status(200).json({ success: true, user: req.user })
+}

@@ -16,7 +16,8 @@ function ProtectedRoutes({ children, role }) {
 
     if (!isLoggedIn) return <Navigate to='/login' replace />
     // if (!hasRequiredRole) return <Navigate to='/' replace />
-    
+
+    if(!user.isAccountVerified) return <Navigate to='/email-verify' replace/>
 
     return children;
 }

@@ -18,15 +18,15 @@ const router = createBrowserRouter([
             { path: '/login', element: <Login /> },
 
 
-            {
-                path: '/email-verify', element: (
+            // {
+            //     path: '/email-verify', element: (
 
-                    <ProtectedRoutes>
-                        <EmailVerify />
-                    </ProtectedRoutes>
-                )
-            },
-            // { path: '/email-verify', element: <EmailVerify /> },
+            //         <ProtectedRoutes>
+            //             <EmailVerify />
+            //         </ProtectedRoutes>
+            //     )
+            // },
+            { path: '/email-verify', element: <EmailVerify /> },
 
             { path: '/reset-password', element: <ResetPassword /> },
 
