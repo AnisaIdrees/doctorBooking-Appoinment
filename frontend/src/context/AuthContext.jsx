@@ -1,5 +1,6 @@
+import React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
-import { getToken, setUser } from "../utils/auth"
+import { getToken } from "../utils/auth"
 import { setUser as User } from "../utils/auth"
 import { fetchUserFromServer } from "../services/auth"
 
@@ -39,3 +40,4 @@ export const AuthProvider = ({ children }) => {
 
 }
 export const useAuthContext = () => useContext(AuthContext)
+

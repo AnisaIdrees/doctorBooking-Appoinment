@@ -6,7 +6,7 @@ const authRouter = Router();
 
 authRouter.post('/signup', signUp)
 authRouter.post('/login', login)
-authRouter.post('/profile', middlewareToProtect, profile)
+authRouter.get('/profile', middlewareToProtect, profile)
 authRouter.post('/send-verify-otp', middlewareToProtect, sendVerifyOtp)
 authRouter.post('/verify-account', middlewareToProtect, verifyEmail)
 authRouter.post('/isAuth', middlewareToProtect, isAuthenticated)
