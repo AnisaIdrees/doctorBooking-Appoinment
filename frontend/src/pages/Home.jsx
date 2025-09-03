@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
 
-      <div className='h-screen max-w-full'>
+      <div className='h-screen max-w-full px-8'>
         <Navbar />
      
 
