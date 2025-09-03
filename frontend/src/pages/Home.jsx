@@ -10,16 +10,9 @@ function Home() {
   return (
     <>
 
-      <div className='h-screen w-full'>
+      <div className='h-screen max-w-full'>
         <Navbar />
-        <h1 className='text-5xl flex flex-col items-center justify-center'>Home</h1>
-
-
-
-        {user ? <p>Welcome {user.email}</p> : <button onClick={() => navigate('/login')} className=' mt-5 p-3 px-8 rounded-4xl bg-blue-600 hover:bg-blue-500 transition-all duration-75 cursor-pointer'>
-          login
-
-        </button>}
+     
 
       </div>
     </>
