@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { images } from '../assets/assets.js'
 
 function Navbar() {
     const navigate = useNavigate()
@@ -30,7 +31,9 @@ function Navbar() {
                 <div className=' flex items-center gap-4 '>
                     {
                         token
-                            ? <div><img src={dd} alt="profile" /></div>
+                            ? <div>
+                                <img className='w-9 rounded-full' src={images.profileImg} alt="profile" />
+                            </div>
                             : <button onClick={() => navigate('/login')} className='bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
 
                     }
