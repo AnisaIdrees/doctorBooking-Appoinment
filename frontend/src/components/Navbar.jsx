@@ -5,7 +5,7 @@ import { images } from '../assets/assets.js'
 function Navbar() {
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState(true)
+    const [token, setToken] = useState(false)
     return (
         <>
             <div className='flex items-center justify-between px-8 text-sm py-4 mb-5 border-b border-b-gray-400'>
@@ -42,7 +42,7 @@ function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                            : <button onClick={() => navigate('/login')} className='bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
+                            : <button onClick={() => navigate('/login')} className='bg-gradient-to-r from-indigo-500 to-indigo-800  text-white text-[16px] px-5 py-3 rounded-full font-light hidden md:block cursor-pointer'>Create account</button>
 
                     }
                 </div>
