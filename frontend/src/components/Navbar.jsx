@@ -178,7 +178,7 @@ function Navbar() {
                     <div className="px-6 pb-6">
                         <button
                             onClick={() => navigate("/login")}
-                            className="w-full bg-gradient-to-r from-indigo-500 to-indigo-800 text-white text-[16px] px-5 py-3 rounded-full font-light cursor-pointer"
+                            className="w-full bg-gradient-to-r from-indigo-600 to-indigo-800 text-white text-[16px] px-5 py-3 rounded-full font-light cursor-pointer"
                         >
                             Register
                         </button>

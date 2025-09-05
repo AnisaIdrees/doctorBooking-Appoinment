@@ -5,6 +5,10 @@ import { FaLockOpen } from "react-icons/fa";
 import Profileimage from '/profile.png';
 import dropdown from '/dropdown.png'
 import NavLogo from '/NavLogo.png'
+import teamDr from  '/teamDr.png'
+import doctor from '/doctor.png'
+import heroBanner from '/heroBanner.jpg'
+
 
 export const icons = {
 
@@ -18,4 +22,7 @@ export const images = {
     profileImg: Profileimage,
     dropdown: dropdown,
     NavbarLogo:NavLogo,
+    doctor:doctor,
+    heroBanner:heroBanner
+
 }
