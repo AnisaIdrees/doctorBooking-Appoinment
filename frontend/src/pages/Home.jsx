@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router'
 import { useAuthContext } from '../context/AuthContext'
 import Navbar from '../components/Navbar'
+import HeroSection from '../components/HeroSection'
 
 function Home() {
   const { user } = useAuthContext()
@@ -10,9 +11,9 @@ function Home() {
   return (
     <>
 
-      <div className='h-screen max-w-full px-8'>
+      <div className='h-screen max-w-full px-0 sm:px-3'>
         <Navbar />
-     
+<HeroSection/>
 
       </div>
     </>

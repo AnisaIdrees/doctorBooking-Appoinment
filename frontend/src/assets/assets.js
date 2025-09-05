@@ -4,6 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { FaLockOpen } from "react-icons/fa";
 import Profileimage from '/profile.png';
 import dropdown from '/dropdown.png'
+import NavLogo from '/NavLogo.png'
 
 export const icons = {
 
@@ -15,5 +16,6 @@ export const icons = {
 
 export const images = {
     profileImg: Profileimage,
-    dropdown: dropdown
+    dropdown: dropdown,
+    NavbarLogo:NavLogo,
 }

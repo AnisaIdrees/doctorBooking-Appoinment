@@ -6,6 +6,12 @@ import Home from '../pages/Home'
 import EmailVerify from '../pages/EmailVerify'
 import ResetPassword from '../pages/ResetPassword'
 import ProtectedRoutes from '../components/ProtectedRoutes'
+import About from '../pages/About'
+import Contact from '../pages/Contact'
+import MyAppoinment from '../pages/MyAppointment'
+import Doctors from '../pages/Doctors'
+import MyProfile from '../pages/MyProfile'
+
 
 const router = createBrowserRouter([
 
@@ -30,6 +36,15 @@ const router = createBrowserRouter([
 
             { path: '/reset-password', element: <ResetPassword /> },
 
+            { path: '/about', element: <About /> },
+
+            { path: '/contact', element: <Contact /> },
+
+            { path: '/Appoinments', element: <MyAppoinment /> },
+
+            { path: '/doctors', element: <Doctors /> },
+
+            { path: '/my-profile', element: <MyProfile /> }
 
         ]
     }
