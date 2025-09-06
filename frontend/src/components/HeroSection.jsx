@@ -17,23 +17,23 @@ function HeroSection() {
                     <motion.div
                         initial={{ x: -80, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: "easeOut" }}
                         className="space-y-6 text-center md:text-left"
                     >
                         <h1 className="text-left text-shadow-white text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-0 sm:mt-6 md:mt-10">
-                           Booking<span className='bg-gradient-to-r from-indigo-700 to-indigo-900 bg-clip-text text-transparent'>  Appointment</span>{" "} With Trusted Doctor
+                            Booking<span className='bg-gradient-to-r from-indigo-700 to-indigo-900 bg-clip-text text-transparent'>  Appointment</span>{" "} With Trusted Doctor
                         </h1>
                         <p className="text-gray-100 text-lg text-left">
                             We craft clean, modern, and fully responsive websites that look
                             amazing on every device and help your business grow online.
                         </p>
-                        <motion.button
+                        <a href="speciality"><motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-gradient-to-r from-indigo-500 to-indigo-900 text-white px-6 py-3 rounded-full font-medium text-lg shadow-lg hover:shadow-indigo-800/50 transition"
                         >
                             Get Started
-                        </motion.button>
+                        </motion.button></a>
                     </motion.div>
 
                     {/* Right Side Image */}
