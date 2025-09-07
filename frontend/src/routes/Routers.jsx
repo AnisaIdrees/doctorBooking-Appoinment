@@ -42,7 +42,9 @@ const router = createBrowserRouter([
 
             { path: '/Appoinments', element: <MyAppoinment /> },
 
-            { path: '/doctors', element: <Doctors /> },
+            {path:'/all doctors', element:<Doctors/>},
+
+            { path: '/doctors/:id', element: <Doctors /> },
 
             { path: '/my-profile', element: <MyProfile /> }
 

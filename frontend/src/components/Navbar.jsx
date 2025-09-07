@@ -42,7 +42,7 @@ function Navbar() {
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-start gap-5 font-medium">
-                    {["Home", "Appoinments", "About", "Contact"].map((item, i) => (
+                    {["Home", "All Doctors", "About", "Contact"].map((item, i) => (
                         <motion.div
                             key={i}
                             custom={i}
@@ -52,7 +52,7 @@ function Navbar() {
                             className="flex flex-col items-center"
                         >
                             <NavLink to={item === "Home" ? "/" : `/${item.toLowerCase()}`}>
-                                <li className="py-1 text-[15px]">{item}</li>
+                                <li  className="py-1 text-[15px]">{item}</li>
                             </NavLink>
                             <motion.hr
                                 variants={hrVariants}
