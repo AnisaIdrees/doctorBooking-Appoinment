@@ -29,6 +29,26 @@ export const images = {
 }
 
 
-export const SpecialityData = {
+export const SpecialityData = [
 
-}
+    {
+        speciality: 'General Physician',
+        image: Profileimage,
+    },
+    {
+        speciality: 'Dermotolohist',
+        image: Profileimage,
+    },
+    {
+        speciality: 'Neuorologist',
+        image: Profileimage,
+    },
+    {
+        speciality: 'Gynecologist',
+        image: Profileimage,
+    },
+    {
+        speciality: 'pediatricians',
+        image: Profileimage,
+    },
+]
