@@ -11,6 +11,7 @@ import Contact from '../pages/Contact'
 import MyAppoinment from '../pages/MyAppointment'
 import Doctors from '../pages/Doctors'
 import MyProfile from '../pages/MyProfile'
+import Appointment from '../pages/Appointment'
 
 
 const router = createBrowserRouter([
@@ -24,29 +25,17 @@ const router = createBrowserRouter([
             { path: '/login', element: <Login /> },
 
 
-            // {
-            //     path: '/email-verify', element: (
 
-            //         <ProtectedRoutes>
-            //             <EmailVerify />
-            //         </ProtectedRoutes>
-            //     )
-            // },
             { path: '/email-verify', element: <EmailVerify /> },
-
             { path: '/reset-password', element: <ResetPassword /> },
-
             { path: '/about', element: <About /> },
-
             { path: '/contact', element: <Contact /> },
+            { path: '/all doctors', element: <Doctors /> },
+            { path: '/doctors/:speciality', element: <Doctors /> },
+            { path: '/my-profile', element: <MyProfile /> },
+            { path: '/My-Appoinments', element: <MyAppoinment /> },
+            { path: '/appoinment/:docId', element: <Appointment /> },
 
-            { path: '/Appoinments', element: <MyAppoinment /> },
-
-            {path:'/all doctors', element:<Doctors/>},
-
-            { path: '/doctors/:id', element: <Doctors /> },
-
-            { path: '/my-profile', element: <MyProfile /> }
 
         ]
     }

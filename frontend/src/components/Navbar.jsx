@@ -87,7 +87,7 @@ function Navbar() {
                                         My profile
                                     </p>
                                     <p
-                                        onClick={() => navigate("/Appoinments")}
+                                        onClick={() => navigate("/My-Appoinments")}
                                         className="hover:text-black cursor-pointer"
                                     >
                                         My Appoinments
