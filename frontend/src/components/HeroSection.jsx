@@ -27,12 +27,12 @@ function HeroSection() {
                             We craft clean, modern, and fully responsive websites that look
                             amazing on every device and help your business grow online.
                         </p>
-                        <a href="speciality"><motion.button
+                        <a href="#speciality"><motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-gradient-to-r from-indigo-500 to-indigo-900 text-white px-6 py-3 rounded-full font-medium text-lg shadow-lg hover:shadow-indigo-800/50 transition"
                         >
-                            Get Started
+                            Book Appoinment
                         </motion.button></a>
                     </motion.div>
 

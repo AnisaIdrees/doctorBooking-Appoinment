@@ -1,19 +1,21 @@
 import React from 'react'
-import { topDoctors } from '../assets/assets'
+import { doctors } from '../assets/assets'
 import { useNavigate } from 'react-router'
+import { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
 
 function TopDr() {
 
     const navigate = useNavigate()
-
+    const { doctors } = useContext(AppContext)
     return (
         <div className='flex flex-col items-center gap-4 text-gray-900 md:mx-10 py-16'>
             <h1 className='text-3xl font-medium'>Top Doctors to Book</h1>
             <p className='text-sm text-center sm:w-1/3 px-4 sm:px-3 md:px-0 lg:px-0'>Lorem ipsum, dolor sit amet consectetur adipisicing ebhdhe hje.
             </p>
             <div className='w-full flex  flex-wrap justify-center items-center gap-4  pt-5 gap-y-6 px-3 sm:px-0'>
-                {topDoctors.slice(0, 10).map((doctor, index) => (
-                    <div onClick={()=>navigate(`/appoinment/${doctor._id}`)} className='border-blue-200 border rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all  duration-500' key={index}>
+                {doctors.slice(0, 10).map((doctor, index) => (
+                    <div onClick={() => navigate(`/appoinment/${doctor._id}`)} className='border-blue-200 border rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all  duration-500' key={index}>
                         <img className='bg-blue-50 w-full h-[260px]' src={doctor.image} alt="" />
                         <div className='p-4'>
                             <div className='flex items-center gap-2 text-sm text-center text-green-500'>
@@ -25,7 +27,7 @@ function TopDr() {
                     </div>
                 ))}
             </div>
-            <button className="bg-gradient-to-r from-indigo-500 to-indigo-800 text-white text-[16px] px-12 mt-10 py-3 rounded-full font-light hidden md:block cursor-pointer">more</button>
+            <button onClick={() => { navigate('/all doctors'); scrollTo(0, 0) }} className="bg-gradient-to-r from-indigo-500 to-indigo-800 text-white text-[16px] px-12 mt-10 py-3 rounded-full font-light hidden md:block cursor-pointer">more</button>
         </div>
     )
 }
