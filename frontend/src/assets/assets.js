@@ -13,7 +13,7 @@ import Neuorologist from '/Neuorologist.png'
 import cardiologist from '/cardiologist.png'
 import dermatologist from '/dermatologist.png'
 import bornBaby from '/bornBaby.png'
-
+import appDr from '/appDr.png'
 
 
 
@@ -30,7 +30,8 @@ export const images = {
     dropdown: dropdown,
     NavbarLogo: NavLogo,
     doctor: doctor,
-    heroBanner: heroBanner
+    heroBanner: heroBanner,
+    appoinmentDr:appDr
 
 }
 
