@@ -5,15 +5,15 @@ import HeroSection from '../components/HeroSection'
 import SpecialityMenu from '../components/SpecialityMenu'
 import TopDr from '../components/TopDr'
 import Banner from '../components/Banner'
+import Footer from '../components/Footer'
 
 function Home() {
   const { user } = useAuthContext()
-  const navigate = useNavigate()
 
   return (
     <>
 
-      <div className='h-screen max-w-full px-0 sm:px-3'>
+      <div >
         <HeroSection />
         <SpecialityMenu />
         <TopDr />

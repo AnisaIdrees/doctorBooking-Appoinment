@@ -3,12 +3,14 @@ import { Outlet } from 'react-router'
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from './components/Navbar'
+import Footer from './components/Footer';
 
 function App() {
   return (
     <>
-     <Navbar/>
+      <Navbar />
       <Outlet />
+      <Footer />
       <ToastContainer
         position="top-center"
         autoClose={3000}
