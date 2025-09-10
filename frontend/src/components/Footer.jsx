@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 
 function Footer() {
@@ -34,9 +35,15 @@ function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
                         <ul className="space-y-2 text-sm">
-                            <li>📍 Karachi, Pakistan</li>
-                            <li>📞 +92 300 1234567</li>
-                            <li>✉️ support@doccure.com</li>
+                            <li className="flex items-center gap-2">
+                                <FaMapMarkerAlt className="text-gray-400" /> Karachi, Pakistan
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <FaPhoneAlt className="text-gray-400" /> +92 300 1234567
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <FaEnvelope className="text-gray-400" /> support@doccure.com
+                            </li>
                         </ul>
                     </div>
 
@@ -45,23 +52,23 @@ function Footer() {
                         <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
                         <div className="flex space-x-4">
                             <a href="#" className="text-blue-600 hover:text-blue-800">
-                                <i className="fab fa-facebook fa-lg"></i>
+                                <FaFacebook size={24} />
                             </a>
                             <a href="#" className="text-blue-400 hover:text-blue-600">
-                                <i className="fab fa-twitter fa-lg"></i>
+                                <FaTwitter size={24} />
                             </a>
                             <a href="#" className="text-pink-600 hover:text-pink-800">
-                                <i className="fab fa-instagram fa-lg"></i>
+                                <FaInstagram size={24} />
                             </a>
                             <a href="#" className="text-blue-700 hover:text-blue-900">
-                                <i className="fab fa-linkedin fa-lg"></i>
+                                <FaLinkedin size={24} />
                             </a>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Line */}
-                <div className="mt-10 border-t border-gray-300 pt-4 text-center text-sm text-gray-500">
+                <div className="mt-10 border-t border-gray-300 pt-4 pb-0 mb-0 text-center text-sm text-gray-500">
                     © {new Date().getFullYear()} Doccure. All rights reserved. Developed by anisaidrees
                 </div>
             </footer>
