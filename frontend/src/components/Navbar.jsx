@@ -38,7 +38,7 @@ function Navbar() {
         <>
             {/* Top Navbar */}
             <div className="flex items-center justify-between px-4 md:px-6 lg:px-10 text-sm py-3 mb-2 shadow-sm">
-                <img className='h-9 w-auto object-contain  py-0' src={images.NavbarLogo} alt="" />
+                <img  onClick={()=>navigate('/')} className='h-9 w-auto object-contain  py-0' src={images.NavbarLogo} alt="" />
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-start gap-5 font-medium">
