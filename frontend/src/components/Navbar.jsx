@@ -42,7 +42,7 @@ function Navbar() {
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-start gap-5 font-medium">
-                    {["Home", "All Doctors", "About", "Contact"].map((item, i) => (
+                    {["Home", "Doctors", "About", "Contact"].map((item, i) => (
                         <motion.div
                             key={i}
                             custom={i}
@@ -152,7 +152,7 @@ function Navbar() {
 
                     {/* Sidebar Nav Items */}
                     <ul className="flex flex-col items-start gap-6 mt-8 px-6 text-[14px] font-medium flex-grow">
-                        {["Home", "Appoinments", "About", "Contact"].map((item, i) => (
+                        {["Home", "Doctors", "About", "Contact"].map((item, i) => (
                             <motion.div
                                 key={i}
                                 custom={i}
