@@ -69,9 +69,9 @@ function Doctors() {
               onClick={() =>
                 speciality === spec ? navigate("/doctors") : navigate(`/doctors/${spec}`)
               }
-              className={`cursor-pointer px-4 py-2 rounded-lg text-sm md:text-base transition 
+              className={`cursor-pointer px-4 py-3 rounded text-sm md:text-base transition 
                 ${speciality === spec
-                  ? "bg-gradient-to-r from-indigo-500 to-indigo-800 text-white shadow"
+                  ? "bg-indigo-2 00 text-gray-700 shadow"
                   : "bg-gray-100 text-gray-700 hover:bg-blue-50"
                 }`}
             >
