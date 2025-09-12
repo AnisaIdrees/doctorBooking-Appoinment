@@ -4,8 +4,6 @@ import { signinToken } from "../utils/token.js";
 
 
 
-
-
 // *****************  signUp  *******************// 
 export const signUp = async (req, res) => {
     const { name, email, password } = req.body
@@ -387,7 +385,6 @@ export const resetPassword = async (req, res) => {
         })
     }
 }
-
 
 //*************** profile **************************//
 export const profile = (req, res) => {

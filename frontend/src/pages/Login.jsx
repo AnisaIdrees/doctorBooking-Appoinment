@@ -4,6 +4,7 @@ import { icons } from '../assets/assets'
 import axios from 'axios'
 import { setToken, setUser } from '../utils/auth'
 import EmailVerify from './EmailVerify'
+import { motion } from 'framer-motion'
 
 function Login() {
 
@@ -172,7 +173,9 @@ function Login() {
 
             <p className=' mx-2 mb-2 text-indigo-500 cursor-pointer'>Forgot password?</p>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               disabled={loading}
               className={`mt-3 rounded-full w-full py-2.5 font-medium text-white 
                 bg-gradient-to-r from-indigo-500 to-indigo-800 
@@ -181,7 +184,7 @@ function Login() {
               {loading
                 ? (state === "signUp" ? "Signing up..." : "Logging in...")
                 : (state === "signUp" ? "Sign up" : "Login")}
-            </button>
+            </motion.button>
           </form>
           {state === 'signUp' ? (
             <p className='text-gray-600 text-center mb-3 mt-4 text-xs'>Already have an account? {" "}

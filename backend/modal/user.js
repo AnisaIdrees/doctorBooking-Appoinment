@@ -12,10 +12,7 @@ const userSchema = mongoose.Schema({
         unique: true,
         lowercase: true
     },
-    // address: {
-    //     type: String,
-    //     required: true,
-    // },
+
     password: {
         type: String,
         required: true,
@@ -41,7 +38,6 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    // verificationCode: String,
 }, { timestamps: true })
 
 // hash password

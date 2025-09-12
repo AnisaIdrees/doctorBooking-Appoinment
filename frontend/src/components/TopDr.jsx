@@ -3,6 +3,7 @@ import { doctors } from '../assets/assets'
 import { useNavigate } from 'react-router'
 import { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
+import { motion } from 'framer-motion'
 
 function TopDr() {
 
@@ -27,7 +28,11 @@ function TopDr() {
                     </div>
                 ))}
             </div>
-            <button onClick={() => { navigate('/all doctors'); scrollTo(0, 0) }} className="bg-gradient-to-r from-indigo-500 to-indigo-800 text-white text-[16px] px-12 mt-10 py-3 rounded-full font-light cursor-pointer">more</button>
+            <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className="bg-gradient-to-r from-indigo-500 to-indigo-800 text-white text-[16px] px-12 mt-10 py-3 rounded-full font-light cursor-pointer">more
+            </motion.button>
         </div>
     )
 }

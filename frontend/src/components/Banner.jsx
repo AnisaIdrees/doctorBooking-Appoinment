@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import { images } from '../assets/assets'
-
+import { motion } from 'framer-motion'
 
 function Banner() {
     const navigate = useNavigate()
@@ -18,12 +18,14 @@ function Banner() {
                     </p>
 
                 </div>
-                <button
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => navigate("/login")}
                     className="mt-7 bg-white text-indigo-800  border-indigo-800 border-2 px-5 py-3 rounded-full font-light cursor-pointer hover:bg-indigo-50 transition"
                 >
                     Create Account
-                </button>
+                </motion.button>
 
             </div>
 
