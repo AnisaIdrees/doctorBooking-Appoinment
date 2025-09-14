@@ -12,6 +12,8 @@ function Appointment() {
   const [slotIndex, setSlotIndex] = useState(0)
   const [slotTime, setSlotTime] = useState('')
 
+  const daysOfWeeks = ['SUN', 'MON', 'TUES', 'WED', 'THURS', 'FRI', 'SAT ']
+
   const fetchDoctorInfo = () => {
     const docInfo = doctors.find(doc => doc._id === docId)
     setDocInfo(docInfo)
@@ -47,7 +49,7 @@ function Appointment() {
       let timeSlots = []
 
       while (currentDate < endtime) {
-        let formattedTime = currentDate.toLocaleDateString([], { hours: '2-digit', minute: '2-digit' })
+        let formattedTime = currentDate.toLocaleTimeString([], { hours: '2-digit', minute: '2-digit' })
 
         //add slot to array 
         timeSlots.push({
@@ -74,7 +76,7 @@ function Appointment() {
   useEffect(() => {
     console.log(doctorslots);
 
-  }, [])
+  }, [doctorslots])
 
   return docInfo && (
     <div>
@@ -90,7 +92,7 @@ function Appointment() {
         <p>
           {docInfo.name}
         </p>
-          <p className='w-5 h-5 rounded-full bg-green-500'>.</p>
+        <p className='w-5 h-5 rounded-full bg-green-500'>.</p>
 
         <div>
           <p>{docInfo.degree} - {docInfo.speciality}</p>
@@ -102,8 +104,21 @@ function Appointment() {
       <div>
         <p>About ! icon</p>
         <p>{docInfo.about}</p>
+        <p>Appoinment fee : <span>{currencySymbol}{docInfo.fees}</span></p>
       </div>
-      <p>Appoinment fee : <span>{currencySymbol}{docInfo.fees}</span></p>
+
+      {/* BOOKING SLOTS */}
+      <div>
+        <p>Booking Slots</p>
+        <div>
+          {doctorslots.length && doctorslots.map((item, index) => (
+            <div key={index} className={`${slotIndex === index ? 'bg-blue-600 text-white':'border border-gray' }`}>
+              <p>{item[0] && daysOfWeeks[item[0].dateTime.getDay()]}</p>
+              <p>{item[0] && item[0].dateTime.getDate()}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
