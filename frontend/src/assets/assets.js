@@ -43,7 +43,7 @@ export const SpecialityData = [
         image: generalPhsycian,
     },
     {
-        speciality: 'Neuorologist',
+        speciality: 'Neurologist',
         image: Neuorologist,
     },
     {
@@ -51,7 +51,7 @@ export const SpecialityData = [
         image: bornBaby,
     },
     {
-        speciality: 'Dermotolohist',
+        speciality: 'Dermatologist',
         image: dermatologist,
     },
     {
@@ -86,6 +86,17 @@ export const doctors = [
   {
     _id: "3",
     name: "Dr. Salman Ali",
+    image: "https://randomuser.me/api/portraits/men/54.jpg",
+    speciality: "Neurologist",
+    degree: "MBBS, FCPS (Neurology)",
+    experience: "15 years",
+    about: "Specialist in brain, spinal cord, and nerve disorders with extensive research background.",
+    fees: 3000,
+    address: { line1: "Neuro Care Hospital", line2: "F-8 Markaz, Islamabad" },
+  },
+    {
+    _id: "3",
+    name: "Dr. Aliyan",
     image: "https://randomuser.me/api/portraits/men/54.jpg",
     speciality: "Neurologist",
     degree: "MBBS, FCPS (Neurology)",

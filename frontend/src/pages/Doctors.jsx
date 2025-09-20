@@ -57,7 +57,7 @@ function Doctors() {
         <div className="flex md:flex-col flex-row md:gap-4 gap-2 flex-wrap">
           {[
             "General Physician",
-            "Neuorologist",
+            "Neurologist",
             "Gynecologist",
             "Dermotologist",
             "Cardiologist",
