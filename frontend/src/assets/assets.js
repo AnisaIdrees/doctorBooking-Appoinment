@@ -95,7 +95,7 @@ export const doctors = [
     address: { line1: "Neuro Care Hospital", line2: "F-8 Markaz, Islamabad" },
   },
     {
-    _id: "3",
+    _id: "20",
     name: "Dr. Aliyan",
     image: "https://randomuser.me/api/portraits/men/54.jpg",
     speciality: "Neurologist",

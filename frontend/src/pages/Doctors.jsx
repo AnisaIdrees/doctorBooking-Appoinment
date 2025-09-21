@@ -59,7 +59,7 @@ function Doctors() {
             "General Physician",
             "Neurologist",
             "Gynecologist",
-            "Dermotologist",
+            "Dermatologist",
             "Cardiologist",
           ].map((spec, idx) => (
             <motion.p
