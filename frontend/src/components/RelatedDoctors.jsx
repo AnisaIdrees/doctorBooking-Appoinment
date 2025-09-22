@@ -9,8 +9,8 @@ function RelatedDoctors({ speciality, docId }) {
     const navigate = useNavigate()
     useEffect(() => {
         if (doctors.length > 0 && speciality) {
-            const doctorsData = doctors.filter((doc) => doc.speciality.trim().toLowerCase() === speciality.trim().toLowerCase() 
-            && doc._id !== docId)
+            const doctorsData = doctors.filter((doc) => doc.speciality.trim().toLowerCase() === speciality.trim().toLowerCase()
+                && doc._id !== docId)
             setRelDocs(doctorsData)
             console.log('filtered data', doctorsData);
 

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 function Navbar() {
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState(false)
+    const [token, setToken] = useState(true)
 
     const navItemVariants = {
         hidden: { opacity: 0, y: -10 },
@@ -38,7 +38,7 @@ function Navbar() {
         <>
             {/* Top Navbar */}
             <div className="flex items-center justify-between px-4 md:px-6 lg:px-10 text-sm py-3 mb-2 shadow-sm">
-                <img onClick={() => navigate('/')} className='h-9 w-auto object-contain  py-0' src={images.NavbarLogo} alt="" />
+                <img onClick={() => navigate('/')} className='h-8 sm:h-7 md:h-9 lg:h-9 w-auto object-contain  py-0' src={images.NavbarLogo} alt="" />
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-start gap-5 font-medium">
@@ -78,7 +78,7 @@ function Navbar() {
                                 src={images.dropdown}
                                 alt="dropdown"
                             />
-                            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
+                            <div className="absolute top-0 right-0 pt-14 px-[-1px] text-base font-medium text-gray-600 z-20 hidden group-hover:block">
                                 <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                                     <p
                                         onClick={() => navigate("my-profile")}
@@ -109,7 +109,7 @@ function Navbar() {
 
 
                     {/* Hamburger / Close Toggle (Mobile Only) */}
-                    <div className="md:hidden">
+                    <div className=" px-0 md:hidden">
                         {!showMenu ? (
                             // Hamburger Button
                             <button
@@ -146,7 +146,7 @@ function Navbar() {
                     {/* Topbar (Logo + Close Button) */}
                     <div className="flex items-center justify-between px-4 py-3 border-b border-gray-400">
                         <img
-                            className="h-9 w-auto object-contain"
+                            className="h-7 w-auto object-contain"
                             src={images.NavbarLogo}
                             alt="logo"
                         />
