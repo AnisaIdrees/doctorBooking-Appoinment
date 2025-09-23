@@ -13,51 +13,51 @@ import Neuorologist from '/Neuorologist.png'
 import cardiologist from '/cardiologist.png'
 import dermatologist from '/dermatologist.png'
 import bornBaby from '/bornBaby.png'
-import appDr from '/appDr.png'
+import bannerImage from '/bannerImage.png'
 
 
 
 export const icons = {
 
-    hidePswdIcon: FaLock,
-    userIcon: RiUserFill,
-    emailIcon: MdEmail,
-    showPswdIcon: FaLockOpen
+  hidePswdIcon: FaLock,
+  userIcon: RiUserFill,
+  emailIcon: MdEmail,
+  showPswdIcon: FaLockOpen
 }
 
 export const images = {
-    profileImg: Profileimage,
-    dropdown: dropdown,
-    NavbarLogo: NavLogo,
-    doctor: doctor,
-    heroBanner: heroBanner,
-    appoinmentDr:appDr
+  profileImg: Profileimage,
+  dropdown: dropdown,
+  NavbarLogo: NavLogo,
+  doctor: doctor,
+  heroBanner: heroBanner,
+  appoinmentDr: bannerImage
 
 }
 
 
 export const SpecialityData = [
 
-    {
-        speciality: 'General Physician',
-        image: generalPhsycian,
-    },
-    {
-        speciality: 'Neurologist',
-        image: Neuorologist,
-    },
-    {
-        speciality: 'Gynecologist',
-        image: bornBaby,
-    },
-    {
-        speciality: 'Dermatologist',
-        image: dermatologist,
-    },
-    {
-        speciality: 'Cardiologist',
-        image: cardiologist,
-    },
+  {
+    speciality: 'General Physician',
+    image: generalPhsycian,
+  },
+  {
+    speciality: 'Neurologist',
+    image: Neuorologist,
+  },
+  {
+    speciality: 'Gynecologist',
+    image: bornBaby,
+  },
+  {
+    speciality: 'Dermatologist',
+    image: dermatologist,
+  },
+  {
+    speciality: 'Cardiologist',
+    image: cardiologist,
+  },
 ]
 
 export const doctors = [
@@ -94,7 +94,7 @@ export const doctors = [
     fees: 3000,
     address: { line1: "Neuro Care Hospital", line2: "F-8 Markaz, Islamabad" },
   },
-    {
+  {
     _id: "20",
     name: "Dr. Aliyan",
     image: "https://randomuser.me/api/portraits/men/54.jpg",
