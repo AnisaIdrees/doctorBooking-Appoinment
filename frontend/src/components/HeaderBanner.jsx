@@ -4,10 +4,15 @@ import { motion } from "framer-motion";
 function HeaderBanner() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="relative w-full min-h-[220px] sm:min-h-[280px] md:min-h-[350px] flex items-center justify-center text-center"
+      className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center text-center text-white"
+      style={{
+        backgroundImage: `url('/banner.jpg')`,   // ✅ image public folder me honi chahiye
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
       {/* 🔹 Background Image + Indigo Gradient */}
       <div
@@ -28,13 +33,13 @@ function HeaderBanner() {
           initial={{ y: -40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-tight"
+          className="text-2xl sm:text-3xl md:text-5xl font-semibold text-white leading-tight"
         >
           My Appointments
         </motion.h2>
 
         <motion.p
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="mt-2 sm:mt-4 text-indigo-100 text-sm sm:text-base md:text-lg max-w-xl mx-auto"

@@ -5,7 +5,7 @@ function HeroSection() {
     return (
         <>
             <section
-                className="relative bg-cover bg-center bg-no-repeat text-white min-h-screen flex items-center px-6 md:px-12 lg:px-20"
+                className="relative bg-cover bg-center bg-no-repeat text-white min-h-screen flex items-center px-6 mb-2 md:px-12 lg:px-20"
                 style={{ backgroundImage: `url(${images.heroBanner})` }}
             >
                 {/* Overlay for dark effect */}

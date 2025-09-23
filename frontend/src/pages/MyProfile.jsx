@@ -52,7 +52,7 @@ import { FaCamera, FaEdit, FaSave } from "react-icons/fa";
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 py-10">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 py-5">
       <div className="w-full max-w-5xl bg-white rounded shadow overflow-hidden">
         <div className="p-6 sm:p-8">
           {/* Top row: avatar + name & small actions */}

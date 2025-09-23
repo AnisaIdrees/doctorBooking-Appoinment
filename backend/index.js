@@ -6,9 +6,10 @@ const app = express()
 import dbConnection from './config/db.js'
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
-
+import connectCloudinary from "./config/cloudinary.js";
 
 dbConnection()
+connectCloudinary()
 
 // middlewares
 app.use(express.json())
