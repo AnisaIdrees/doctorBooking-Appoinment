@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+
     email: {
         type: String,
         required: true,
@@ -18,26 +19,60 @@ const userSchema = mongoose.Schema({
         required: true,
         minlength: 8
     },
+
+    image: {
+        type: String,
+        default: ''
+    },
+
+    address: {
+        type: Object,
+        default: {
+            line1: '',
+            line2: '',
+        }
+    },
+
+    gender: {
+        type: String,
+        default: 'Not Selected'
+    },
+
+    dob: {
+        type: String,
+        default: 'Not Selected'
+    },
+
+        phone: {
+        type: String,
+        default: '0000000000'
+    },
+
     isAccountVerified: {
         type: Boolean,
         default: false,
     },
+
     verifyOtp: {
         type: String,
         default: '',
     },
+
     verifyOtpExpiredAt: {
         default: 0,
         type: Number,
     },
+
     resetOtp: {
         type: String,
         default: '',
     },
+
     resetOtpExpiredAt: {
         type: Number,
         default: 0,
     },
+
 }, { timestamps: true })
 
 // hash password

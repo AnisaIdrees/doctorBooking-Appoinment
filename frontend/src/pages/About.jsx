@@ -1,17 +1,10 @@
 import React from 'react'
-import HeroSection from '../components/HeroSection'
-import SpecialityMenu from '../components/SpecialityMenu'
-import TopDr from '../components/TopDr'
-import Banner from '../components/Banner'
+import AboutSection from '../components/AboutSection'
 
 function About() {
   return (
-    <div>About
-
-      <HeroSection/>
-      <SpecialityMenu/>
-      <TopDr/>
-      <Banner/>
+    <div>
+      <AboutSection />
     </div>
   )
 }

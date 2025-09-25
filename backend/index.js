@@ -7,6 +7,7 @@ import dbConnection from './config/db.js'
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import connectCloudinary from "./config/cloudinary.js";
+import adminRouter from "./routes/adminRoutes.js";
 
 dbConnection()
 connectCloudinary()
@@ -16,7 +17,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter)
+app.use('/api/user', userRouter);
+app.use('/api/admin',adminRouter)
 
 app.get('/', (req, res) => {
     res.send('hello world')
