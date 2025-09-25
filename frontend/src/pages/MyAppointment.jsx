@@ -9,7 +9,11 @@ function MyAppointment() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <HeaderBanner />
+      <HeaderBanner
+        heading1={'My Appoinment'}
+        paragraph={'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro, praesentium'}
+        bgImg={`https://t4.ftcdn.net/jpg/05/61/13/93/360_F_561139396_1GIVBIvUsOCx7gdn3TUPmQcDOPN7DZRi.jpg`}
+      />
 
       {/* Appointment Cards */}
       <div className="max-w-4xl flex justify-around items-center mx-auto flex-wrap px-2 p-6 md:p-10 space-y-8">
@@ -62,7 +66,7 @@ function MyAppointment() {
                 className="w-full bg-gradient-to-r from-indigo-600 to-indigo-800  text-[16px] px-5  cursor-pointer text-white font-semibold py-2 rounded-full transition">
                 Pay Online
               </motion.button>
-              
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
