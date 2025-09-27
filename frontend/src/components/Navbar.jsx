@@ -1,12 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { images } from '../assets/assets.js'
 import { motion } from "framer-motion";
+import { useRef } from 'react';
 
 function Navbar() {
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
     const [token, setToken] = useState(true)
+    const [open, setOpen] = useState(false)
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        function closeDropdown(e) {
+            // agar click dropdown ke bahar hai to close
+            if (menuRef.current && !menuRef.current.contains(e.target)) {
+                setOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", closeDropdown);
+        return () => document.removeEventListener("mousedown", closeDropdown);
+    }, []);
+
+    console.log(open);
 
     const navItemVariants = {
         hidden: { opacity: 0, y: -10 },
@@ -69,16 +85,22 @@ function Navbar() {
                     {token ? (
                         <div className="flex items-center cursor-pointer group relative">
                             <img
+                                onClick={() => setOpen(!open)}
                                 className="w-9 rounded-full"
                                 src={images.profileImg}
                                 alt="profile"
                             />
                             <img
+                                onClick={() => setOpen(!open)}
                                 className="w-[25px]"
                                 src={images.dropdown}
                                 alt="dropdown"
                             />
-                            <div className="absolute top-0 right-0 pt-14 px-[-1px] text-base font-medium text-gray-600 z-20 hidden group-hover:block">
+                            {/* <div
+                                onClick={() => setOpen(!open)}
+                                className={`absolute top-0 right-0 pt-14 px-2 text-base font-medium text-gray-600 z-20 hidden 
+                            ${open ? 'block' : 'hidden'}
+                          md:group-hover:block`}>
                                 <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                                     <p
                                         onClick={() => navigate("my-profile")}
@@ -94,7 +116,19 @@ function Navbar() {
                                     </p>
                                     <p className="hover:text-black cursor-pointer">Logout</p>
                                 </div>
+                            </div> */}
+                            <div
+
+                                className={`absolute top-0 right-0 pt-14 px-2 text-base font-medium text-gray-600 z-20 
+    ${open ? 'block' : 'hidden'} md:group-hover:block`}
+                            >
+                                <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
+                                    <p onClick={() => navigate("my-profile")} className="hover:text-black cursor-pointer">My profile</p>
+                                    <p onClick={() => navigate("/My-Appoinments")} className="hover:text-black cursor-pointer">My Appoinments</p>
+                                    <p className="hover:text-black cursor-pointer">Logout</p>
+                                </div>
                             </div>
+
                         </div>
                     ) : (
                         <motion.button
