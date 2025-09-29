@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { images } from '../assets/assets.js'
 import { motion } from "framer-motion";
-import { useRef } from 'react';
 
 function Navbar() {
     const navigate = useNavigate()
@@ -13,7 +12,6 @@ function Navbar() {
 
     useEffect(() => {
         function closeDropdown(e) {
-            // agar click dropdown ke bahar hai to close
             if (menuRef.current && !menuRef.current.contains(e.target)) {
                 setOpen(false);
             }
@@ -21,8 +19,6 @@ function Navbar() {
         document.addEventListener("mousedown", closeDropdown);
         return () => document.removeEventListener("mousedown", closeDropdown);
     }, []);
-
-    console.log(open);
 
     const navItemVariants = {
         hidden: { opacity: 0, y: -10 },
@@ -33,17 +29,11 @@ function Navbar() {
         }),
     };
 
-    // hr line animation
     const hrVariants = {
         hidden: { width: 0, opacity: 0 },
-        visible: {
-            width: "60%",
-            opacity: 1,
-            transition: { duration: 0.5, ease: "easeInOut" },
-        },
+        visible: { width: "60%", opacity: 1, transition: { duration: 0.5 } },
     };
 
-    // Sidebar animation
     const sidebarVariants = {
         hidden: { x: "-100%" },
         visible: { x: 0, transition: { type: "spring", stiffness: 100 } },
@@ -52,9 +42,15 @@ function Navbar() {
 
     return (
         <>
-            {/* Top Navbar */}
-            <div className="flex items-center justify-between px-4 md:px-6 lg:px-10 text-sm py-4 mb-1 shadow-sm">
-                <img onClick={() => navigate('/')} className='h-8 sm:h-7 md:h-9 lg:h-9 w-auto object-contain  py-0' src={images.NavbarLogo} alt="" />
+            {/* Fixed Top Navbar */}
+            <div className="fixed top-0 left-0 w-full bg-white z-50 shadow-sm flex items-center justify-between px-4 md:px-6 lg:px-10 text-sm py-4">
+                {/* Logo */}
+                <img
+                    onClick={() => navigate('/')}
+                    className='h-8 sm:h-7 md:h-9 lg:h-9 w-auto object-contain cursor-pointer'
+                    src={images.NavbarLogo}
+                    alt="logo"
+                />
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-start gap-5 font-medium">
@@ -83,52 +79,28 @@ function Navbar() {
                 {/* Profile / Login */}
                 <div className="flex items-center gap-4">
                     {token ? (
-                        <div className="flex items-center cursor-pointer group relative">
+                        <div ref={menuRef} className="flex items-center cursor-pointer relative">
                             <img
-                                onClick={() => setOpen(!open)}
+                                onClick={() => setOpen((prev) => !prev)}
                                 className="w-9 rounded-full"
                                 src={images.profileImg}
                                 alt="profile"
                             />
                             <img
-                                onClick={() => setOpen(!open)}
+                                onClick={() => setOpen((prev) => !prev)}
                                 className="w-[25px]"
                                 src={images.dropdown}
                                 alt="dropdown"
                             />
-                            {/* <div
-                                onClick={() => setOpen(!open)}
-                                className={`absolute top-0 right-0 pt-14 px-2 text-base font-medium text-gray-600 z-20 hidden 
-                            ${open ? 'block' : 'hidden'}
-                          md:group-hover:block`}>
-                                <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
-                                    <p
-                                        onClick={() => navigate("my-profile")}
-                                        className="hover:text-black cursor-pointer"
-                                    >
-                                        My profile
-                                    </p>
-                                    <p
-                                        onClick={() => navigate("/My-Appoinments")}
-                                        className="hover:text-black cursor-pointer"
-                                    >
-                                        My Appoinments
-                                    </p>
-                                    <p className="hover:text-black cursor-pointer">Logout</p>
+                            {open && (
+                                <div className="absolute top-0 right-0 pt-14 px-2 text-base font-medium text-gray-600 z-20">
+                                    <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
+                                        <p onClick={() => { navigate("my-profile"); setOpen(false); }} className="hover:text-black cursor-pointer">My Profile</p>
+                                        <p onClick={() => { navigate("/My-Appoinments"); setOpen(false); }} className="hover:text-black cursor-pointer">My Appointments</p>
+                                        <p onClick={() => setToken(false)} className="hover:text-black cursor-pointer">Logout</p>
+                                    </div>
                                 </div>
-                            </div> */}
-                            <div
-
-                                className={`absolute top-0 right-0 pt-14 px-2 text-base font-medium text-gray-600 z-20 
-    ${open ? 'block' : 'hidden'} md:group-hover:block`}
-                            >
-                                <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
-                                    <p onClick={() => navigate("my-profile")} className="hover:text-black cursor-pointer">My profile</p>
-                                    <p onClick={() => navigate("/My-Appoinments")} className="hover:text-black cursor-pointer">My Appoinments</p>
-                                    <p className="hover:text-black cursor-pointer">Logout</p>
-                                </div>
-                            </div>
-
+                            )}
                         </div>
                     ) : (
                         <motion.button
@@ -142,29 +114,18 @@ function Navbar() {
                     )}
 
 
-                    {/* Hamburger / Close Toggle (Mobile Only) */}
-                    <div className=" px-0 md:hidden">
-                        {!showMenu ? (
-                            // Hamburger Button
-                            <button
-                                className="flex flex-col gap-1 -rotate-180"
-                                onClick={() => setShowMenu(true)}
-                            >
-                                <span className="w-6 h-0.5 bg-black"></span>
-                                <span className="w-5 h-0.5 bg-black"></span>
-                                <span className="w-4 h-0.5 bg-black"></span>
-                            </button>
-                        ) : (
-                            // Close Button
-                            <button
-                                className="text-[20px] font-light text-black hover:text-gray-800 transition"
-                                onClick={() => setShowMenu(false)}
-                            >
-                                ✖
-                            </button>
-                        )}
-                    </div>
 
+                    {/* Hamburger */}
+                    <div className="md:hidden">
+                        <button
+                            className="flex flex-col gap-1"
+                            onClick={() => setShowMenu(true)}
+                        >
+                            <span className="w-6 h-0.5 bg-black"></span>
+                            <span className="w-5 h-0.5 bg-black"></span>
+                            <span className="w-4 h-0.5 bg-black"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -175,15 +136,21 @@ function Navbar() {
                     animate="visible"
                     exit="exit"
                     variants={sidebarVariants}
-                    className="fixed top-0 left-0 h-screen w-3/4 bg-white/90  backdrop-blur-sm transition-opacity duration-300 shadow-2xl z-50 md:hidden flex flex-col "
+                    className="fixed top-0 left-0 h-screen w-3/4 bg-white/95 backdrop-blur-sm shadow-2xl z-50 md:hidden flex flex-col"
                 >
-                    {/* Topbar (Logo + Close Button) */}
-                    <div className="flex items-center justify-between px-4 py-3 border-b border-gray-400">
+                    {/* Topbar with Close Icon */}
+                    <div className="flex items-center justify-between px-4 py-4 border-b border-gray-400">
                         <img
                             className="h-7 w-auto object-contain"
                             src={images.NavbarLogo}
                             alt="logo"
                         />
+                        <button
+                            className="text-[22px] font-light text-black hover:text-gray-800 transition"
+                            onClick={() => setShowMenu(false)}
+                        >
+                            ✖
+                        </button>
                     </div>
 
                     {/* Sidebar Nav Items */}
@@ -197,7 +164,10 @@ function Navbar() {
                                 animate="visible"
                                 className="flex flex-col"
                             >
-                                <NavLink to={item === "Home" ? "/" : `/${item.toLowerCase()}`}>
+                                <NavLink
+                                    to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                                    onClick={() => setShowMenu(false)}
+                                >
                                     <li className="cursor-pointer hover:text-indigo-600">{item}</li>
                                 </NavLink>
                                 <motion.hr
@@ -210,12 +180,12 @@ function Navbar() {
                         ))}
                     </ul>
 
-                    {/* Register Button (Bottom) */}
+                    {/* Register Button */}
                     <div className="px-6 pb-6">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => navigate("/login")}
+                            onClick={() => { navigate("/login"); setShowMenu(false); }}
                             className="w-full bg-gradient-to-r from-indigo-600 to-indigo-800 text-white text-[16px] px-5 py-3 rounded-full font-light cursor-pointer"
                         >
                             Register
@@ -223,7 +193,6 @@ function Navbar() {
                     </div>
                 </motion.div>
             )}
-
         </>
     )
 }
