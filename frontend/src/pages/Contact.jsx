@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 
 export default function Contact() {
   return (
-    <div>
+    <div className='pt-0'>
 
       <HeaderBanner heading1={'Contact'} paragraph={'Lorem ipsum dolor, sit amet consectetur'}
         bgImg={'https://thumbs.dreamstime.com/b/doctor-table-contact-us-icons-virtual-screen-96409322.jpg'}

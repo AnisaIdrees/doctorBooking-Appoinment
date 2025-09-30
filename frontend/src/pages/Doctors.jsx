@@ -42,7 +42,7 @@ function Doctors() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="flex flex-col md:flex-row gap-8 p-6 max-w-7xl mx-auto"
+      className="flex flex-col md:flex-row gap-8 p-6 max-w-7xl mx-auto pt-28"
     >
       {/* Sidebar Filters */}
       <motion.div

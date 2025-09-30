@@ -8,7 +8,7 @@ function MyAppointment() {
   const { doctors } = useContext(AppContext);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen  bg-gray-100">
       <HeaderBanner
         heading1={'My Appoinment'}
         paragraph={'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro, praesentium'}

@@ -84,7 +84,7 @@ function Appointment() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6"
+      className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6 pt-20"
     >
       {/* Doctor Card */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white shadow rounded p-6">

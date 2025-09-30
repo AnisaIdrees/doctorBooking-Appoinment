@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { FaCamera, FaEdit, FaSave } from "react-icons/fa";
 
 
- function MyProfile() {
+function MyProfile() {
   const [userData, setUserData] = useState({
     name: "Aneesa Idrees",
     image: "https://i.pravatar.cc/300?img=5",
@@ -52,7 +52,7 @@ import { FaCamera, FaEdit, FaSave } from "react-icons/fa";
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 py-5">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 pt-20 py-5">
       <div className="w-full max-w-5xl bg-white rounded shadow overflow-hidden">
         <div className="p-6 sm:p-8">
           {/* Top row: avatar + name & small actions */}

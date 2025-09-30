@@ -3,7 +3,7 @@ import AboutSection from '../components/AboutSection'
 
 function About() {
   return (
-    <div>
+    <div className='pt-0'>
       <AboutSection />
     </div>
   )

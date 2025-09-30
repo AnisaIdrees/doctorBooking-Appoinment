@@ -43,7 +43,7 @@ function Navbar() {
     return (
         <>
             {/* Fixed Top Navbar */}
-            <div className="fixed top-0 left-0 w-full bg-white z-50 shadow-sm flex items-center justify-between px-4 md:px-6 lg:px-10 text-sm py-4">
+            <div className="fixed top-0  left-0 w-full bg-white z-50 shadow-sm flex items-center justify-between mb-6  px-4 md:px-6 lg:px-10 text-sm py-4">
                 {/* Logo */}
                 <img
                     onClick={() => navigate('/')}
@@ -146,10 +146,10 @@ function Navbar() {
                             alt="logo"
                         />
                         <button
-                            className="text-[22px] font-light text-black hover:text-gray-800 transition"
+                            className="text-[22px] font-semibold text-gray-700 hover:text-gray-800 transition"
                             onClick={() => setShowMenu(false)}
                         >
-                            ✖
+                            X
                         </button>
                     </div>
 
