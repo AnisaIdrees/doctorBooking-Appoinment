@@ -21,7 +21,7 @@ function HeroSection() {
                         className="space-y-6 text-center md:text-left"
                     >
                         <h1 className="text-left text-shadow-white text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-0 sm:mt-6 md:mt-10">
-                            Booking<span className='bg-gradient-to-r from-indigo-700 to-indigo-900 bg-clip-text text-transparent'>  Appointment</span>{" "} With Trusted Doctor
+                            Booking<span className='text-blue-800'>  Appointment</span>{" "} With Trusted Doctor
                         </h1>
                         <p className="text-gray-100 text-lg text-left">
                             We craft clean, modern, and fully responsive websites that look
