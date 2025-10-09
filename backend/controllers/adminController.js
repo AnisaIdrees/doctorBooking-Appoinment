@@ -3,7 +3,7 @@ import { v2 as cloudinary } from 'cloudinary'
 import jwt from 'jsonwebtoken'
 
 
-// ___________________________ Adding Doctors ___________________________ //
+// ___________________________  Adding Doctors  __________________________ //
 export const addDOctor = async (req, res) => {
 
     try {
