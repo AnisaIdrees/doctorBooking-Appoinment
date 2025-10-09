@@ -1,8 +1,9 @@
 import doctorModel from "../modal/doctorSchema.js";
 import { v2 as cloudinary } from 'cloudinary'
+import jwt from 'jsonwebtoken'
 
-// ______________________________  Adding Doctors  _______________________________ //
 
+// ___________________________ Adding Doctors ___________________________ //
 export const addDOctor = async (req, res) => {
 
     try {
@@ -36,7 +37,7 @@ export const addDOctor = async (req, res) => {
             name,
             email,
             password,
-            image:imageUrl,
+            image: imageUrl,
             speciality,
             experience,
             degree,
@@ -61,4 +62,39 @@ export const addDOctor = async (req, res) => {
         })
     }
 
-} 
+}
+
+// _________________________ Api for ADMIN LOGIN _____________________ //
+export const loginAdmin = async (req, res) => {
+
+    try {
+
+        const { email, password } = req.body;
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+
+            const token = jwt.sign(email+password , process.env.JWT_SECRET)
+            res.status(200).json({
+                success:true,
+                token
+            })
+        }
+        else {
+            res.status(401).json(
+                {
+                    success: false,
+                    message: 'Invalid Credentials'
+
+                }
+            )
+
+
+        }
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+
+}
