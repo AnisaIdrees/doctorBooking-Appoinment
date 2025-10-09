@@ -1,9 +1,10 @@
 import React from 'react'
+import Login from './Login'
 
 function App() {
   return (
-    <div>
-      app
+    <div className='text-red-700'>
+      <Login/>
     </div>
   )
 }
