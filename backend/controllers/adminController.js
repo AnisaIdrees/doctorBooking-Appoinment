@@ -8,7 +8,9 @@ export const addDOctor = async (req, res) => {
     try {
 
         const { name, email, password, speciality, degree, experience, about, fees, address } = req.body
-        const imageFile = req.file
+        const imageFile = req.file ? req.file.path : null
+        console.log("📂 File data from multer:", req.file);
+
         console.log({ name, email, password, speciality, degree, experience, about, fees, address }, imageFile);
 
         // checking for all data to add doctor
@@ -19,7 +21,7 @@ export const addDOctor = async (req, res) => {
             })
         }
         // check user
-        const isExist = await User.findOne({ email })
+        const isExist = await doctorModel.findOne({ email })
         if (isExist) {
             return res.status(401).json({
                 success: false,
@@ -28,13 +30,13 @@ export const addDOctor = async (req, res) => {
         }
 
         // upload image to cloudinary
-        const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" });
+        const imageUpload = await cloudinary.uploader.upload(imageFile, { resource_type: "image" });
         const imageUrl = imageUpload.secure_url
         const doctorData = {
             name,
             email,
             password,
-            imageUrl,
+            image:imageUrl,
             speciality,
             experience,
             degree,
