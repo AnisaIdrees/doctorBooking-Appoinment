@@ -3,6 +3,8 @@ import { icons } from './assets/assets.js'
 import { motion } from 'framer-motion'
 import { AdminContext } from './context/AdminContext.jsx'
 import axios from 'axios';
+import { setAToken } from './utils/auth.js';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -21,17 +23,19 @@ function Login() {
 
 
             if (state === "Admin") {
-                const { data } = await axios.post(backendUrl + '/api/admin/login' , {email, password})
+                const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
 
                 if (data.success) {
                     setToken(data.token)
+                    setAToken(data.token)
                     console.log(data.token);
+                    toast.success(data.message)
 
-                    
                 }
             }
 
             else {
+                    toast.error(data.message)
 
             }
 
