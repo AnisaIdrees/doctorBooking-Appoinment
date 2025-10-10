@@ -12,7 +12,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
 
-    const { setAToken, backendUrl } = useContext(AdminContext)
+    const { setToken, backendUrl } = useContext(AdminContext)
 
     const onSubmitHandler = async (e) => {
         e.preventDefault()
@@ -22,6 +22,13 @@ function Login() {
 
             if (state === "Admin") {
                 const { data } = await axios.post(backendUrl + '/api/admin/login' , {email, password})
+
+                if (data.success) {
+                    setToken(data.token)
+                    console.log(data.token);
+
+                    
+                }
             }
 
             else {
@@ -54,7 +61,7 @@ function Login() {
                                 <icons.emailIcon />
                             </div>
                             <input
-                                onClick={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 value={email}
                                 name="email"
                                 className="outline-none     flex-1 text-gray-700 placeholder-gray-400"
@@ -73,7 +80,7 @@ function Login() {
                                 {showPassword ? <icons.showPswdIcon /> : <icons.hidePswdIcon />}
                             </div>
                             <input
-                                onClick={(e) => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                                 value={password}
                                 name="password"
                                 className="outline-none bg-transparent flex-1 text-gray-700 placeholder-gray-400"
