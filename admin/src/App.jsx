@@ -3,7 +3,7 @@ import Login from './Login'
 
 function App() {
   return (
-    <div className='text-red-700'>
+    <div>
       <Login/>
     </div>
   )
