@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
-import Login from './Login'
+import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
 import { AdminContext } from './context/AdminContext';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import DashboardRoutes from './routes/DashboardRoutes';
 
 function App() {
 
   const { token } = useContext(AdminContext)
 
-  return token ? (
-    <div>
+  return (
+    <>
+
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -21,25 +25,27 @@ function App() {
         theme="light"
         toastClassName="custom-toast"
       />
-    </div>
-  ) : (
-    <>
-      < div >
+
+      {token ? (
+        // Dashboard layout
+        <>
+          <div className='bg-[#F8F9FD]'>
+            <Navbar />
+          </div>
+
+          <div className='flex items-start'>
+            <Sidebar />
+            <DashboardRoutes />
+          </div>
+
+        </>
+      ) : (
         <Login />
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={true}
-          closeOnClick
-          pauseOnHover
-          draggable
-          theme="light"
-          toastClassName="custom-toast"
-        />
-      </div >
+      )}
+
     </>
   )
+
 }
 
 export default App
