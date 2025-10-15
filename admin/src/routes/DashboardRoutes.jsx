@@ -14,9 +14,9 @@ function DashboardRoutes() {
         <Route path='/' element={<DashboardLayout/>}>
 
         <Route index element={<Dashboard/>}/>
-        <Route path='/all-appoinments' element={<AllAppoinments/>}/>
-        <Route path='/add-doctors' element={<AddDoctors/>}/>
-        <Route path='/doctor-list' element={<DoctorsList/>}/>
+        <Route path='all-appoinments' element={<AllAppoinments/>}/>
+        <Route path='add-doctors' element={<AddDoctors/>}/>
+        <Route path='doctor-list' element={<DoctorsList/>}/>
 
         </Route>
       </Routes>
