@@ -21,11 +21,11 @@ const Sidebar = ({ isOpen, toggelSideBar }) => {
 
     return (
         <aside className={`${isOpen ? 'translate-x-0' : '-translate-x-full'
-            } w-64 h-screen bg-white border border-gray-100 shadow md:translate-x-0 md:static top-0 left-0`}>
+            }  fixed w-64 h-screen bg-white border border-gray-100 shadow md:translate-x-0 md:static top-0 left-0`}>
             <div>
 
                 <div className='px-3 flex justify-between items-center mb-10 mt-5'>
-                    <h1 className='text-2xl font-bold px-4 py-2 md:px-5 '>Admin <span className='text-indigo-600'>Panel</span></h1>
+                    <h1 className='text-2xl font-bold   md:px-3 '>Admin <span className='text-indigo-600'>Panel</span></h1>
                     <button
                         className='md:hidden text-2xl font-bold hover:text-[#2c1fdd]'
                         onClick={toggelSideBar}>
@@ -83,12 +83,13 @@ const Sidebar = ({ isOpen, toggelSideBar }) => {
                 {/* Logout Button */}
                 <div
                     onClick={handleLogOut}
-                    className="flex items-center gap-3 mt-6 px-4 py-2 md:px-5 rounded-lg cursor-pointer hover:bg-indigo-500 transition-all duration-200"
+                    className="flex items-center gap-3 mt-6 px-4 py-2 md:px-5 rounded cursor-pointer hover:bg-gradient-to-r from-indigo-500 to-indigo-800 hover:shadow-lg hover:text-white transition-all duration-200"
                 >
                     <icons.logout className="text-xl" />
                     <span>Logout</span>
                 </div>
             </div>
+        
         </aside>
     )
 }
