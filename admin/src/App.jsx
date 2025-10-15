@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import DashboardRoutes from './routes/DashboardRoutes';
+import DashboardLayout from './pages/admin/layout/DashboardLayout';
 
 function App() {
 
@@ -29,15 +30,7 @@ function App() {
       {token ? (
         // Dashboard layout
         <>
-          <div className='bg-[#F8F9FD]'>
-            <Navbar />
-          </div>
-
-          <div className='flex items-start'>
-            <Sidebar />
-            <DashboardRoutes />
-          </div>
-
+          <DashboardLayout />
         </>
       ) : (
         <Login />

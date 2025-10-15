@@ -5,13 +5,27 @@ import { FaLockOpen } from "react-icons/fa";
 import Profileimage from '/profile.png';
 import dropdown from '/dropdown.png'
 import NavLogo from '/NavLogo.png'
+import { LuLayoutDashboard } from "react-icons/lu";
+import { BsCalendar2Date } from "react-icons/bs";
+import { RiHeartAdd2Line } from "react-icons/ri";
+import { FiLogOut } from "react-icons/fi";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RiCloseLargeLine } from "react-icons/ri";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 export const icons = {
 
     hidePswdIcon: FaLock,
     userIcon: RiUserFill,
     emailIcon: MdEmail,
-    showPswdIcon: FaLockOpen
+    showPswdIcon: FaLockOpen,
+    dashboard:LuLayoutDashboard,
+    appoinments:BsCalendar2Date,
+    addDoctor:RiHeartAdd2Line,
+    doctorList:AiOutlineUsergroupAdd,
+    logout:FiLogOut,
+    toggleBtn : RxHamburgerMenu,
+    closeBtn:RiCloseLargeLine,
 }
 
 
