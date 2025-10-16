@@ -24,10 +24,8 @@ const Sidebar = ({ isOpen, toggelSideBar }) => {
     return (
         <motion.aside
             className={`${isOpen ? 'translate-x-0' : '-translate-x-full'
-                }   w-64 h-full fixed bg-white border border-gray-100 shadow md:translate-x-0 md:static top-0 left-0 z-50
-                transfrom transition-transform  duration-700
-           
-            `}>
+                } fixed top-0 left-0 h-screen w-64 bg-white shadow-lg border-r border-gray-200 z-50 transition-transform duration-500 md:translate-x-0`}
+        >
             <div>
 
                 <div className='px-3 flex justify-between items-center mb-10 mt-5'>

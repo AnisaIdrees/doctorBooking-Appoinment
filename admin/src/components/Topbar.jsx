@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Topbar = ({ toggleSidebar }) => {
   return (
-    <header className="bg-white border border-gray-100 shadow p-4 flex justify-between items-center sticky top-0 z-40">
+    <header className="bg-white border border-gray-100 shadow p-4 flex justify-between items-center  top-0 z-40  sticky">
       <div className="flex items-center gap-3">
         <button
           onClick={toggleSidebar}

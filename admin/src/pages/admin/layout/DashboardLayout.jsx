@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Sidebar from '../../../components/Sidebar'
 import Topbar from '../../../components/Topbar'
-import Dashboard from '../Dashboard'
 import { Outlet } from 'react-router-dom'
 
 function DashboardLayout() {
@@ -10,18 +9,23 @@ function DashboardLayout() {
 
     return (
         <>
-            <div className='h-screen  flex bg-gray-100 '>
+            <div className="h-screen bg-gray-100">
+                {/*  Fixed Sidebar */}
+                <Sidebar isOpen={isOpen} toggelSideBar={toggelSideBar} />
 
-                <div className='h-screen  overflow-hidden '><Sidebar isOpen={isOpen} toggelSideBar={toggelSideBar} /></div>
+                {/* Main Content */}
+                <div className="md:ml-64 flex flex-col h-screen">
 
-                <div className='flex-1 flex flex-col min-h-screen transition-all duration-300'>
-                    <Topbar toggleSidebar={toggelSideBar} />
+                    {/*  Fixed Topbar */}
+                    <div className="fixed top-0 left-0 md:left-64 right-0 z-40 bg-white shadow">
+                        <Topbar toggleSidebar={toggelSideBar} />
+                    </div>
 
-                    <main className="flex-1 py-4 sm:py-7 px-4 sm:px-7 md:px-10 bg-gray-100 shadow-inner">
+                    {/*  Scrollable Main Area (below topbar) */}
+                    <main className="flex-1 overflow-y-auto mt-[64px] p-3 px-4 md:px-13 bg-gray-100">
                         <Outlet />
                     </main>
                 </div>
-
             </div>
         </>
     )
