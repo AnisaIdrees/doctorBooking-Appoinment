@@ -1,14 +1,45 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { images } from '../../assets/assets'
 import { motion } from 'framer-motion'
+import { AdminContext } from '../../context/AdminContext';
 
 function AddDoctors() {
-  const [loading, setLoading] = useState(false)
+
+  const { backendUrl, token } = useContext(AdminContext)
+
+  const [loading, setLoading] = useState(false);
+  const [docImg, setDocImg] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [experience, setExperience] = useState('1 Year');
+  const [about, setABout] = useState('');
+  const [fees, setFees] = useState('');
+  const [speciality, setSpeciality] = useState('General Physician');
+  const [degree, setDegree] = useState('');
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
+
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    setLoading(true)
+    
+    try {
+
+    } catch (error) {
+
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <h1 className='text-2xl mb-3 font-bold text-gray-600 pb-4 py-4'>Add Doctors</h1>
 
-      <form>
+      <form onSubmit={onSubmitHandler}>
 
         {/* add doctor main container */}
         <div className='bg-white min-h-screen w-full rounded border border-gray-200 shadow px-8 py-8'>
@@ -17,9 +48,9 @@ function AddDoctors() {
 
           <div className='flex  items-center gap-4 mb-8 text-gray-500'>
             <label htmlFor="doc-img">
-              <img className='w-18 bg-gray-100 rounded-full cursor-pointer' src={images.profileImg} alt="" />
+              <img className='w-18 h-18 bg-gray-100 rounded-full cursor-pointer' src={docImg ? URL.createObjectURL(docImg) : images.profileImg} alt="" />
             </label>
-            <input type="file" id='doc-img' hidden />
+            <input onChange={(e) => setDocImg(e.target.files[0])} type="file" id='doc-img' hidden />
             <p>Upload doctor <br /> picture</p>
           </div>
 
@@ -28,22 +59,22 @@ function AddDoctors() {
 
             <div className='flex flex-col gap-5'>
               <p>Doctor name</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='Name' required />
+              <input onChange={(e) => setName(e.target.value)} value={name} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='Name' required />
             </div>
 
             <div className='flex flex-col gap-5'>
               <p>Doctor email</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="email" placeholder='Email' required />
+              <input onChange={(e) => setEmail(e.target.value)} value={email} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="email" placeholder='Email' required />
             </div>
 
             <div className='flex flex-col gap-5'>
               <p>Doctor password</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="password" placeholder='password' required />
+              <input onChange={(e) => setPassword(e.target.value)} value={password} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="password" placeholder='password' required />
             </div>
 
             <div className='flex flex-col gap-5'>
               <p>Experience</p>
-              <select className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
+              <select onChange={(e) => setExperience(e.target.value)} value={experience} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
                 <option value="1 Year">1 Year</option>
                 <option value="2 Year">2 Year</option>
                 <option value="3 Year">3 Year</option>
@@ -59,12 +90,12 @@ function AddDoctors() {
 
             <div className='flex flex-col gap-5'>
               <p>Fees</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="number" placeholder='Fees' required />
+              <input onChange={(e) => setFees(e.target.value)} value={fees} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="number" placeholder='Fees' required />
             </div>
 
             <div className='flex flex-col gap-5'>
               <p>Speciality</p>
-              <select className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
+              <select onChange={(e) => setSpeciality(e.target.value)} value={speciality} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
                 <option value="General Physician">General Physician</option>
                 <option value="Neurologist">Neurologist</option>
                 <option value="Gynecologist">Gynecologist</option>
@@ -75,13 +106,13 @@ function AddDoctors() {
 
             <div className='flex flex-col gap-5'>
               <p>Education</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='Education' required />
+              <input onChange={(e) => setDegree(e.target.value)} value={degree} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='Education' required />
             </div>
 
             <div className='flex flex-col gap-5'>
               <p>Address</p>
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='address 1' required />
-              <input className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='address 2' required />
+              <input onChange={(e) => setAddress1(e.target.value)} value={address1} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='address 1' required />
+              <input onChange={(e) => setAddress2(e.target.value)} value={address2} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' type="text" placeholder='address 2' required />
             </div>
 
           </div>
@@ -89,10 +120,11 @@ function AddDoctors() {
 
           <div className='mt-6 flex flex-col gap-5'>
             <p>About doctor</p>
-            <textarea className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' placeholder='Write about doctor' rows={5} required />
+            <textarea onChange={(e) => setABout(e.target.value)} value={about} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' placeholder='Write about doctor' rows={5} required />
           </div>
 
           <motion.button
+            type='submit'
             whileHover={!loading ? { scale: 1.05 } : {}}
             whileTap={!loading ? { scale: 0.95 } : {}}
             disabled={loading}
