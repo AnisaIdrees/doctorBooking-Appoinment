@@ -6,7 +6,7 @@ function AddDoctors() {
   const [loading, setLoading] = useState(false)
   return (
     <>
-      <h1 className='text-xl mb-3 font-bold text-gray-600 pb-4 py-4'>Add Doctors</h1>
+      <h1 className='text-2xl mb-3 font-bold text-gray-600 pb-4 py-4'>Add Doctors</h1>
 
       <form>
 
