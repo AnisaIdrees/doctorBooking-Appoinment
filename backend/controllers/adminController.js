@@ -64,6 +64,27 @@ export const addDOctor = async (req, res) => {
 
 }
 
+
+// ____________________ Get all Doctors list for admin panel  __________ //
+export const allDoctors = async (req, res) => {
+
+    try {
+
+        const doctors = await doctorModel.find({}).select('-password')
+        res.status(200).json({
+            success: true,
+            doctors,
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+
 // _________________________ Api for ADMIN LOGIN _____________________ //
 export const loginAdmin = async (req, res) => {
 
@@ -72,11 +93,11 @@ export const loginAdmin = async (req, res) => {
         const { email, password } = req.body;
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
 
-            const token = jwt.sign(email+password , process.env.JWT_SECRET)
+            const token = jwt.sign(email + password, process.env.JWT_SECRET)
             res.status(200).json({
-                success:true,
+                success: true,
                 token,
-                message:'Admin Login Successfully !'
+                message: 'Admin Login Successfully !'
             })
         }
         else {
@@ -99,3 +120,6 @@ export const loginAdmin = async (req, res) => {
     }
 
 }
+
+
+

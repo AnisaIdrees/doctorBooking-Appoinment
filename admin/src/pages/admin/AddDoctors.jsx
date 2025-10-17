@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react'
 import { images } from '../../assets/assets'
 import { motion } from 'framer-motion'
 import { AdminContext } from '../../context/AdminContext';
+import { toast } from 'react-toastify'
+import axios from 'axios'
+
 
 function AddDoctors() {
 
@@ -21,14 +24,57 @@ function AddDoctors() {
   const [address2, setAddress2] = useState('');
 
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
 
-    } catch (error) {
+      if (!docImg) {
+        toast.error('Image Not Selected')
+        setLoading(false);
+        return;
+      }
 
+      const formData = new FormData()
+
+      formData.append('image', docImg);
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('experience', experience);
+      formData.append('fees', Number(fees));
+      formData.append('speciality', speciality);
+      formData.append('degree', degree);
+      formData.append('about', about);
+      formData.append('address', JSON.stringify({ line1: address1, line2: address2 }));
+
+      // formData.forEach((value, key) => {
+      //   console.log(`${key} >>> ${value}`);
+
+      // })
+
+      const { data } = await axios.post(`${backendUrl}/api/admin/add-doctor  `, formData, { headers: { token } })
+
+      if (data.success) {
+        toast.success(data.message)
+        setDocImg(false)
+        setName('')
+        setEmail('')
+        setPassword('')
+        setExperience('')
+        setDegree('')
+        setFees('')
+        setSpeciality('')
+        setABout('')
+        setAddress1('')
+        setAddress2('')
+      }
+      else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
     }
     finally {
       setLoading(false)
@@ -74,7 +120,7 @@ function AddDoctors() {
 
             <div className='flex flex-col gap-5'>
               <p>Experience</p>
-              <select onChange={(e) => setExperience(e.target.value)} value={experience} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
+              <select onChange={(e) => setExperience(e.target.value)} value={experience} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' id="experience">
                 <option value="1 Year">1 Year</option>
                 <option value="2 Year">2 Year</option>
                 <option value="3 Year">3 Year</option>
@@ -95,7 +141,7 @@ function AddDoctors() {
 
             <div className='flex flex-col gap-5'>
               <p>Speciality</p>
-              <select onChange={(e) => setSpeciality(e.target.value)} value={speciality} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="">
+              <select onChange={(e) => setSpeciality(e.target.value)} value={speciality} className='border rounded px-3 py-2 border-gray-400 focus:ring-2 focus:outline-none focus:ring-indigo-300' name="" id="speciality">
                 <option value="General Physician">General Physician</option>
                 <option value="Neurologist">Neurologist</option>
                 <option value="Gynecologist">Gynecologist</option>
