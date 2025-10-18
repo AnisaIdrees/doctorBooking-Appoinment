@@ -4,7 +4,7 @@ import { icons, images } from '../../assets/assets'
 
 const DoctorsList = () => {
 
-    const { token, getAllDoctors, doctors } = useContext(AdminContext);
+    const { token, getAllDoctors, doctors , changeAvailablity} = useContext(AdminContext);
     const [search, setSearch] = useState('')
 
     const handleSearch = (e) => {
@@ -65,6 +65,7 @@ const DoctorsList = () => {
                                 <div className='flex items-center space-x-2'>
                                     <div className='relative flex items-center'>
                                         <input
+                                        onChange={()=>changeAvailablity(item._id)}
                                             type="checkbox"
                                             checked={item.available}
                                             readOnly
@@ -80,10 +81,10 @@ const DoctorsList = () => {
                     ))
                 ) : (
                     <p className='text-zinc-600 '>Not Found</p>
+                    
                 )
 
                 }
-
             </div>
 
         </>
