@@ -12,6 +12,8 @@ import { FiLogOut } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { LuUserRoundSearch } from "react-icons/lu";
+import doctor from '/doctor.png'
 
 export const icons = {
 
@@ -26,6 +28,7 @@ export const icons = {
     logout:FiLogOut,
     toggleBtn : RxHamburgerMenu,
     closeBtn:RiCloseLargeLine,
+    searchDoctors:LuUserRoundSearch,
 }
 
 
@@ -34,4 +37,5 @@ export const images = {
   profileImg: Profileimage,
   dropdown: dropdown,
   NavbarLogo: NavLogo,
+  doctor:doctor,
 }
