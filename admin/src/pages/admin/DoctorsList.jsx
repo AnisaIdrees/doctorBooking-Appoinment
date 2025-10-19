@@ -12,8 +12,8 @@ const DoctorsList = () => {
         console.log(e.target.value);
 
     }
-    const filteredDoctors = doctors.filter(Doctor => {
-        return Doctor.name.toLowerCase().includes(search.toLowerCase())
+    const filteredDoctors = doctors.filter(doctor => {
+        return doctor.name.toLowerCase().includes(search.toLowerCase()) || doctor.speciality.toLowerCase().includes(search.toLocaleLowerCase())
     })
 
     useEffect(() => {
