@@ -1,6 +1,6 @@
 import doctorModel from "../modal/doctorSchema.js";
 
-// ___________________  changeAvailablity  ____________________//
+// ___________________  changeAvailablity  ____________________ //
 
 export const changeAvailablity = async (req, res) => {
 
@@ -24,7 +24,7 @@ export const changeAvailablity = async (req, res) => {
 }
 
 
-// ____________________ Doctors List _________________________//
+// ____________________ Doctors List _________________________ //
 export const doctorsList = async (req, res) => {
 
     try {

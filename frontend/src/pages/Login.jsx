@@ -90,14 +90,14 @@ function Login() {
               headers: { Authorization: `Bearer ${data.token}` }
             }
             )
-            alert("OTP sent to your email. Please verify.");
+            toast.success("OTP sent to your email. Please verify.");
             console.log(data2.message);
 
             navigate('/email-verify')
           }
         }
         else {
-          await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData)
+        const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData)
           console.log("Login successfully:", data);
           setFormData({
             name: "",
@@ -129,7 +129,7 @@ function Login() {
 
           <form onSubmit={handleSubmit}>
             {state === 'signUp' && (
-              <div className='flex items-center mt-4 mb-4 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
+              <div className='border border-transparent focus-within:border-indigo-500 transition-all duration-300 flex items-center mt-4 mb-4 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
                 <div>{<icons.userIcon />}</div>
                 <input
                   onChange={handleChange}
@@ -143,7 +143,8 @@ function Login() {
             )}
 
 
-            <div className='flex items-center mt-4 mb-4 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
+            <div className='border border-transparent focus-within:border-indigo-500 transition-all duration-300 :h-0.5
+             flex items-center mt-4 mb-4 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
               <div>{<icons.emailIcon />}</div>
               <input
                 onChange={handleChange}
@@ -155,7 +156,7 @@ function Login() {
                 required />
             </div>
 
-            <div className='flex items-center mt-5 mb-2 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
+            <div className='border border-transparent focus-within:border-indigo-500 transition-all duration-300 flex items-center mt-5 mb-2 gap-3 px-5 py-2.5 rounded-full bg-amber-50'>
               <div
                 onClick={() => setShowPassword(!showPassword)}
                 className='cursor-pointer position-relative transition-all'>{showPassword ? <icons.showPswdIcon /> : <icons.hidePswdIcon />}</div>

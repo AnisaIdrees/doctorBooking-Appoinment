@@ -2,13 +2,28 @@ import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { images } from '../assets/assets.js'
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
+import { removeToken } from '../utils/auth.js';
 
 function Navbar() {
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState(true)
+    const [token, setToken] = useState('')
     const [open, setOpen] = useState(false)
     const menuRef = useRef(null);
+
+    const handleLogOut = () => {
+
+        try {
+
+            token && setToken('')
+            removeToken()
+            toast.success('Logout Successfully')
+
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
 
     useEffect(() => {
         function closeDropdown(e) {
@@ -97,7 +112,7 @@ function Navbar() {
                                     <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                                         <p onClick={() => { navigate("my-profile"); setOpen(false); }} className="hover:text-black cursor-pointer">My Profile</p>
                                         <p onClick={() => { navigate("/My-Appoinments"); setOpen(false); }} className="hover:text-black cursor-pointer">My Appointments</p>
-                                        <p onClick={() => setToken(false)} className="hover:text-black cursor-pointer">Logout</p>
+                                        <p onClick={handleLogOut} className="hover:text-black cursor-pointer">Logout</p>
                                     </div>
                                 </div>
                             )}
