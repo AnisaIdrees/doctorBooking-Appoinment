@@ -5,9 +5,11 @@ import axios from 'axios'
 import { setToken, setUser } from '../utils/auth'
 import EmailVerify from './EmailVerify'
 import { motion } from 'framer-motion'
+import { useAuthContext } from '../context/AuthContext'
 
 function Login() {
 
+  const { login } = useAuthContext()
   const navigate = useNavigate()
   const [state, setState] = useState('signUp')
   const [showPassword, setShowPassword] = useState(false)
@@ -85,6 +87,7 @@ function Login() {
               password: ""
             });
 
+            navigate('email-verify')
             //for email verify
             const { data: data2 } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/send-verify-otp`, {}, {
               headers: { Authorization: `Bearer ${data.token}` }
@@ -97,7 +100,9 @@ function Login() {
           }
         }
         else {
-        const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData)
+
+          const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData)
+          login(data.token)
           console.log("Login successfully:", data);
           setFormData({
             name: "",

@@ -1,24 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { images } from '../assets/assets.js'
 import { motion } from "framer-motion";
 import { toast } from 'react-toastify';
 import { removeToken } from '../utils/auth.js';
+import { useAuthContext } from '../context/AuthContext.jsx';
 
 function Navbar() {
+    const { token } = useAuthContext()
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
-    const [token, setToken] = useState('')
+    // const [token, setToken] = useState('')
     const [open, setOpen] = useState(false)
     const menuRef = useRef(null);
+
+    // useEffect(() => {
+    //     const saveToken = getToken()
+    //     if (saveToken) {
+    //         setToken(saveToken)
+    //     }
+
+    // }, [])
 
     const handleLogOut = () => {
 
         try {
 
-            token && setToken('')
+            token
             removeToken()
             toast.success('Logout Successfully')
+            navigate('/')
 
         } catch (error) {
             toast.error(error.message)
