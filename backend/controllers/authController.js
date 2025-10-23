@@ -1,7 +1,7 @@
 import User from "../modal/user.js";
 import transporter from "../utils/email.js";
 import { signinToken } from "../utils/token.js";
-
+import { v2 as cloudinary } from 'cloudinary'
 
 
 // *****************  signUp  *******************// 
@@ -386,7 +386,33 @@ export const resetPassword = async (req, res) => {
     }
 }
 
+//*************** Update profile *********************//
+export const updateProfile = (req, res) => {
+
+    try {
+
+        const { userId, name, phone, dob, address, gender } = req.body
+        const imageFile = req.file;
+
+        if (!name || !phone || !dob || !gender) {
+            return res.status(401).json({
+                success:false,
+                message:'Data Missing'
+            })
+        }
+
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        })
+    }
+
+}
+
+
 //*************** profile **************************//
 export const profile = (req, res) => {
-  res.status(200).json({ success: true, user: req.user })
+    res.status(200).json({ success: true, user: req.user })
 }
