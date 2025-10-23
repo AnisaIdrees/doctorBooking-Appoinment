@@ -1,15 +1,16 @@
 import React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
-import { getToken, setToken } from "../utils/auth"
-// import { setUser as User } from "../utils/auth"
-// import { fetchUserFromServer } from "../services/auth/"
+import { getToken, setToken, removeToken } from "../utils/auth"
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router"
+
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    // const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [token, setTokenState] = useState(getToken() || '');
+
 
     const loadUser = async () => {
         const token = getToken()
@@ -30,8 +31,23 @@ export const AuthProvider = ({ children }) => {
         setTokenState(tokenValue)
     }
 
+    const handleLogOut = () => {
+
+        try {
+
+
+            removeToken()
+            setTokenState('')
+            toast.success('Logout Successfully')
+            
+
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ token ,login}}>
+        <AuthContext.Provider value={{ token, login, handleLogOut }}>
             {children}
         </AuthContext.Provider>
     )

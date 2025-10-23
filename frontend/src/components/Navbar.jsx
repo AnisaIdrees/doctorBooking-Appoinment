@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { images } from '../assets/assets.js'
 import { motion } from "framer-motion";
-import { toast } from 'react-toastify';
-import { removeToken } from '../utils/auth.js';
 import { useAuthContext } from '../context/AuthContext.jsx';
 
 function Navbar() {
-    const { token } = useAuthContext()
+    const { token ,handleLogOut} = useAuthContext()
     const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
     // const [token, setToken] = useState('')
@@ -22,19 +20,6 @@ function Navbar() {
 
     // }, [])
 
-    const handleLogOut = () => {
-
-        try {
-
-            token
-            removeToken()
-            toast.success('Logout Successfully')
-            navigate('/')
-
-        } catch (error) {
-            toast.error(error.message)
-        }
-    }
 
     useEffect(() => {
         function closeDropdown(e) {
