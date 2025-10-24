@@ -386,21 +386,40 @@ export const resetPassword = async (req, res) => {
     }
 }
 
-//*************** Update profile *********************//
-export const updateProfile = (req, res) => {
+// //*************** Update profile *********************//
+// export const updateProfile = (req, res) => {
+
+//     try {
+
+//         const { userId, name, phone, dob, address, gender } = req.body
+//         const imageFile = req.file;
+
+//         if (!name || !phone || !dob || !gender) {
+//             return res.status(401).json({
+//                 success:false,
+//                 message:'Data Missing'
+//             })
+//         }
+
+
+//     } catch (error) {
+//         return res.status(500).json({
+//             success: false,
+//             message: error.message,
+//         })
+//     }
+
+// }
+
+
+//*************** profile **************************//
+export const getProfile = async (req, res) => {
 
     try {
 
-        const { userId, name, phone, dob, address, gender } = req.body
-        const imageFile = req.file;
-
-        if (!name || !phone || !dob || !gender) {
-            return res.status(401).json({
-                success:false,
-                message:'Data Missing'
-            })
-        }
-
+        const { userId } = req.body;
+        const userData = await User.findById(userId).select('-password')
+        res.status(200).json({ success: true, userData })
 
     } catch (error) {
         return res.status(500).json({
@@ -409,10 +428,4 @@ export const updateProfile = (req, res) => {
         })
     }
 
-}
-
-
-//*************** profile **************************//
-export const profile = (req, res) => {
-    res.status(200).json({ success: true, user: req.user })
 }
