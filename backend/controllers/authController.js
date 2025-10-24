@@ -417,8 +417,7 @@ export const getProfile = async (req, res) => {
 
     try {
 
-        const { userId } = req.body;
-        const userData = await User.findById(userId).select('-password')
+        const userData = await User.findById(req.user._id).select('-password')
         res.status(200).json({ success: true, userData })
 
     } catch (error) {
