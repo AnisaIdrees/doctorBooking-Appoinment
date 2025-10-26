@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [token, setTokenState] = useState(getToken() || '');
     const [userData, setUserData] = useState(false);
-    const [image , setImage] = useState(false);
+
 
     const loadUser = async () => {
 

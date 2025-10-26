@@ -1,15 +1,21 @@
 import React, { useState, useRef } from "react";
 import { FaCamera, FaEdit, FaSave } from "react-icons/fa";
 import { useAuthContext } from "../context/AuthContext";
+import axios from "axios";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
 
 
 function MyProfile() {
 
-const {userData , setUserData} = useAuthContext()
-
+  const { userData, setUserData, loadUser } = useAuthContext()
+  const { token } = useContext(AppContext)
   const [isEdit, setIsEdit] = useState(false);
   const [previewImg, setPreviewImg] = useState(userData.image);
   const fileInputRef = useRef(null);
+  const [image, setImage] = useState(false);
+
 
   // Open file picker
   const openFilePicker = () => {
@@ -42,8 +48,56 @@ const {userData , setUserData} = useAuthContext()
     setIsEdit(false);
   };
 
-  return  userData && (
+  // updatedUser
+  const updatedUserProfile = async () => {
+
+    try {
+
+      const formData = new FormData()
+      formData.append('name', userData.name)
+      formData.append('phone', userData.phone)
+      formData.append('dob', userData.dob)
+      formData.append('gender', userData.gender)
+      formData.append('address', userData.address)
+      image && formData.append('image', image)
+
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/update-profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      if (data.success) {
+        toast.success(data.message)
+        await updatedUserProfile()
+        setIsEdit(false)
+        setImage(false)
+      }
+      else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+
+  }
+
+  return userData && (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 pt-20 py-5">
+
+      {/* {
+        isEdit
+          ? <label htmlFor="">
+            <div>
+              <img src={image ? URL.createObjectURL(image) : userData.image} alt="" />
+              <img src={image ? '' : 'https://southernplasticsurgery.com.au/wp-content/uploads/2013/10/user-placeholder.png'} alt="" />
+            </div>
+          </label>
+          : <img
+            src={previewImg}
+            alt={`${userData.name} avatar`}
+            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-indigo-100 shadow-md"
+          />
+      } */}
       <div className="w-full max-w-5xl bg-white rounded shadow overflow-hidden">
         <div className="p-6 sm:p-8">
           {/* Top row: avatar + name & small actions */}
@@ -116,13 +170,14 @@ const {userData , setUserData} = useAuthContext()
                     </button>
                   </>
                 ) : (
-                  <button
-                    onClick={() => setIsEdit(true)}
-                    className="flex items-center gap-2 bg-white border border-indigo-200 text-indigo-700 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition"
-                  >
-                    <FaEdit />
-                    <span>Edit Profile</span>
-                  </button>
+                  // <button
+                  //   onClick={() => setIsEdit(true)}
+                  //   className="flex items-center gap-2 bg-white border border-indigo-200 text-indigo-700 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition"
+                  // >
+                  //   <FaEdit />
+                  //   <span>Edit Profile</span>
+                  // </button>
+                  ''
                 )}
               </div>
             </div>
@@ -232,7 +287,7 @@ const {userData , setUserData} = useAuthContext()
           <div className="mt-6 flex justify-end gap-3">
             {isEdit ? (
               <button
-                onClick={handleSave}
+                onClick={updatedUserProfile}
                 className="bg-gradient-to-r from-indigo-500 to-indigo-800 text-white px-5 py-2 rounded-full shadow hover:opacity-95 transition flex items-center gap-2"
               >
                 <FaSave /> Save
