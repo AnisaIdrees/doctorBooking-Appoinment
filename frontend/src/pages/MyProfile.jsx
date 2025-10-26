@@ -1,20 +1,11 @@
 import React, { useState, useRef } from "react";
 import { FaCamera, FaEdit, FaSave } from "react-icons/fa";
+import { useAuthContext } from "../context/AuthContext";
 
 
 function MyProfile() {
-  const [userData, setUserData] = useState({
-    name: "Aneesa Idrees",
-    image: "https://i.pravatar.cc/300?img=5",
-    email: "anisaidrees191@gmail.com",
-    phone: "+9230102369501",
-    address: {
-      line1: "House no 123, Block A",
-      line2: "Karachi, Pakistan",
-    },
-    gender: "female",
-    dob: "2008-01-04",
-  });
+
+const {userData , setUserData} = useAuthContext()
 
   const [isEdit, setIsEdit] = useState(false);
   const [previewImg, setPreviewImg] = useState(userData.image);
@@ -51,7 +42,7 @@ function MyProfile() {
     setIsEdit(false);
   };
 
-  return (
+  return  userData && (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 pt-20 py-5">
       <div className="w-full max-w-5xl bg-white rounded shadow overflow-hidden">
         <div className="p-6 sm:p-8">

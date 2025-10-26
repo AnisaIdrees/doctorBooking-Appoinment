@@ -2,22 +2,41 @@ import React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
 import { getToken, setToken, removeToken } from "../utils/auth"
 import { toast } from 'react-toastify'
-import { useNavigate } from "react-router"
-
+import axios from "axios"
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [token, setTokenState] = useState(getToken() || '');
-
+    const [userData, setUserData] = useState(false);
+    const [image , setImage] = useState(false);
 
     const loadUser = async () => {
-        const token = getToken()
-        if (token) {
-            setTokenState(token)
+
+        try {
+
+            const token = getToken()
+            if (token) {
+                setTokenState(token)
+            }
+
+            const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/profile`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            if (data.success) {
+                setUserData(data.userData)
+            } else {
+                toast.error(data.message)
+            }
+            setLoading(false)
+
+        } catch (error) {
+            toast.error(error.message)
         }
-        setLoading(false)
+
     }
 
 
@@ -39,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             removeToken()
             setTokenState('')
             toast.success('Logout Successfully')
-            
+
 
         } catch (error) {
             toast.error(error.message)
@@ -47,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ token, login, handleLogOut }}>
+        <AuthContext.Provider value={{ token, login, handleLogOut, loadUser, userData, setUserData }}>
             {children}
         </AuthContext.Provider>
     )

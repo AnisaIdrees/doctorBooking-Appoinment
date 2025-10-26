@@ -386,30 +386,6 @@ export const resetPassword = async (req, res) => {
     }
 }
 
-// //*************** Update profile *********************//
-// export const updateProfile = (req, res) => {
-
-//     try {
-
-//         const { userId, name, phone, dob, address, gender } = req.body
-//         const imageFile = req.file;
-
-//         if (!name || !phone || !dob || !gender) {
-//             return res.status(401).json({
-//                 success:false,
-//                 message:'Data Missing'
-//             })
-//         }
-
-
-//     } catch (error) {
-//         return res.status(500).json({
-//             success: false,
-//             message: error.message,
-//         })
-//     }
-
-// }
 
 
 //*************** profile **************************//
@@ -419,6 +395,46 @@ export const getProfile = async (req, res) => {
 
         const userData = await User.findById(req.user._id).select('-password')
         res.status(200).json({ success: true, userData })
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        })
+    }
+
+}
+
+// //*************** Update profile *********************//
+export const updateProfile = async (req, res) => {
+
+    try {
+
+        const { name, phone, dob, address, gender } = req.body
+        const imageFile = req.file;
+        const userId = req.user._id;
+
+        if (!name || !phone || !dob || !gender) {
+            return res.status(401).json({
+                success: false,
+                message: 'Data Missing'
+            })
+        }
+        await User.findByIdAndUpdate(userId, { name, phone, address: JSON.parse(address), dob, gender })
+
+        if (imageFile) {
+            // upload image to cloudinary
+            const uploadImg = await cloudinary.uploader.upload(imageFile.path, { resource_type: 'image' })
+            const imageUrl = uploadImg.secure_url;
+
+            await User.findByIdAndUpdate(userId, { image:imageUrl })
+
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'profile updated'
+        })
 
     } catch (error) {
         return res.status(500).json({
