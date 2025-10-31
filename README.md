@@ -37,7 +37,7 @@ Hosting	Vercel (Full Stack Deployment)
 
 📸 **Screenshots  
 > ![Authentication Screenshot](./frontend/public/login.png)  
-> ![Dashboard Screenshot](https://cdn.dribbble.com/userupload/16825487/file/original-c08ff8c5a380f9c79ae37f41f25fd7d5.jpg?format=webp&resize=400x300&vertical=center)  
+> ![Dashboard Screenshot](./frontend//public/admin-panel.png)  
 
 
 🧑‍⚕️ Dashboard Overview
