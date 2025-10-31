@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderBanner from '../components/HeaderBanner'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 
 export default function Contact() {
