@@ -104,18 +104,4 @@ Managed state using Context API
 
 Deployed frontend and backend on Vercel
 
-📸 Live Demo
 
-Frontend: https://your-frontend.vercel.app
-
-Backend API: https://your-backend.vercel.app
-
-(Replace # with actual links)
-
-🩺 Author
-
-Aneesa Idrees
-Full-Stack MERN Developer | React | Node | MongoDB | Tailwind CSS
-📧 Email: your.email@example.com
-
-🔗 GitHub
