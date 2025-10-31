@@ -1,52 +1,62 @@
-🩺 Doctor Booking Appointment App
+# 🩺 **Doctor Booking Appointment App**
 
-A MERN-based healthcare appointment system that enables patients to book, manage, and track doctor appointments online.
-It also includes a secure Admin Panel for managing doctors, patients, and appointments — built with a clean UI and Context API-based state management.
+A **MERN-based healthcare appointment system** that enables patients to **book, manage, and track doctor appointments online**.  
+It also includes a **secure Admin Panel** for managing doctors, patients, and appointments — built with a clean UI and **Context API-based state management**.
 
-🚀 Project Overview
+---
 
-The Doctor Booking Appointment App simplifies online doctor appointment booking.
-Patients can find doctors, book slots, and manage appointments, while the admin handles system data from an interactive dashboard.
+## 🚀 **Project Overview**
 
-Built for scalability, security, and user experience using the MERN stack.
+The **Doctor Booking Appointment App** simplifies online doctor appointment booking.  
+Patients can find doctors, book slots, and manage appointments, while the **admin handles system data** from an interactive dashboard.
 
-🛠️ Tech Stack
-Layer	Technology
-Frontend	React.js + Tailwind CSS
-State Management	Context API
-Backend	Node.js + Express.js
-Database	MongoDB (Atlas)
-Authentication	JWT (JSON Web Token)
-Hosting	Vercel (Full Stack Deployment)
-🔑 Current Features
+Built for **scalability**, **security**, and **user experience** using the **MERN stack**.
 
-✅ Secure JWT Authentication (Login / Signup)
+---
 
-✅ Book, view, and cancel doctor appointments
+## 🛠️ **Tech Stack**
 
-✅ Doctor listing with filters & categories
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | React.js + Tailwind CSS |
+| **State Management** | Context API |
+| **Backend** | Node.js + Express.js |
+| **Database** | MongoDB (Atlas) |
+| **Authentication** | JWT (JSON Web Token) |
+| **Hosting** | Vercel (Full Stack Deployment) |
 
-✅ Admin Panel for managing doctors, users & bookings
+---
 
-✅ Context API-based global state management
+## 🔑 **Current Features**
 
-✅ Fully responsive UI for all devices
+✅ Secure JWT Authentication (Login / Signup)  
+✅ Book, view, and cancel doctor appointments  
+✅ Doctor listing with filters & categories  
+✅ Admin Panel for managing doctors, users & bookings  
+✅ Context API-based global state management  
+✅ Fully responsive UI for all devices  
 
-👩‍⚕️ Admin Panel Screenshots
-🔐 Admin Login Page
+---
 
-📸 **Screenshots  
-> ![Authentication Screenshot](./frontend/public/login.png)  
-> ![Dashboard Screenshot](./frontend//public/admin-panel.png)  
+## 👩‍⚕️ **Admin Panel Screenshots**
 
+### 🔐 Admin Login Page  
+📸 **Screenshots:**  
+![Authentication Screenshot](./frontend/public/login.png)  
+![Dashboard Screenshot](./frontend/public/admin-panel.png)
 
-🧑‍⚕️ Dashboard Overview
+---
 
-➕ Add New Doctor
+## 🧑‍⚕️ **Dashboard Overview**
 
-📅 Appointments Management
+➕ Add New Doctor  
+📅 Appointments Management  
 
-📊 Folder Structure
+---
+
+## 📊 **Folder Structure**
+
+```
 doctor-booking-app/
 ┣ 📂 client/                  # React Frontend
 ┃ ┣ 📂 src/
@@ -64,44 +74,34 @@ doctor-booking-app/
 ┃ ┗ 📜 server.js
 ┣ 📜 README.md
 ┗ 📜 package.json
+```
 
-📌 Future Enhancements
-🧠 Advanced Features
+---
 
-Online payments
+## 📌 **Future Enhancements**
 
-Appointment reminders via email/SMS
+### 🧠 Advanced Features
+- Online payments  
+- Appointment reminders via email/SMS  
+- Doctor availability calendar  
 
-Doctor availability calendar
+### 🎨 UI/UX
+- Dark/Light mode  
+- Enhanced dashboard visuals  
+- Loading skeletons for smooth UX  
 
-🎨 UI/UX
+### 🩺 Admin Tools
+- Role-based access (Admin, Doctor, Patient)  
+- Analytics dashboard  
+- Verification system for new doctors  
 
-Dark/Light mode
+---
 
-Enhanced dashboard visuals
+## 👩‍💻 **Role & Contributions**
 
-Loading skeletons for smooth UX
-
-🩺 Admin Tools
-
-Role-based access (Admin, Doctor, Patient)
-
-Analytics dashboard
-
-Verification system for new doctors
-
-👩‍💻 Role & Contributions
-
-Built Admin Panel (CRUD operations for doctors & appointments)
-
-Integrated Node.js/Express API with MongoDB
-
-Implemented JWT authentication system
-
-Designed frontend using React + Tailwind CSS
-
-Managed state using Context API
-
-Deployed frontend and backend on Vercel
-
-
+- Built **Admin Panel** (CRUD operations for doctors & appointments)  
+- Integrated **Node.js/Express API** with **MongoDB**  
+- Implemented **JWT authentication system**  
+- Designed frontend using **React + Tailwind CSS**  
+- Managed state using **Context API**  
+- Deployed frontend and backend on **Vercel**
